@@ -1,0 +1,724 @@
+[
+  {
+    "success": true,
+    "url": "https://www2.deloitte.com/us/en.html",
+    "title": "",
+    "file": "deloitte_homepage.png",
+    "company": "Deloitte",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www2.deloitte.com/us/en/pages/about-deloitte/articles/leadership.html",
+    "title": "",
+    "file": "deloitte_leadership.png",
+    "company": "Deloitte",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www2.deloitte.com/us/en/pages/careers/articles/life-at-deloitte.html",
+    "title": "",
+    "file": "deloitte_careers.png",
+    "company": "Deloitte",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www2.deloitte.com/us/en/pages/about-deloitte/topics/inclusion.html",
+    "title": "",
+    "file": "deloitte_culture.png",
+    "company": "Deloitte",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www2.deloitte.com/us/en/pages/about-deloitte/articles/diversity-equity-inclusion.html",
+    "title": "",
+    "file": "deloitte_diversity.png",
+    "company": "Deloitte",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.pwc.com/us/en.html",
+    "title": "",
+    "file": "pwc_homepage.png",
+    "company": "PwC",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.pwc.com/gx/en/about/global-annual-review.html",
+    "title": "",
+    "file": "pwc_leadership.png",
+    "company": "PwC",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.pwc.com/us/en/careers.html",
+    "title": "",
+    "file": "pwc_careers.png",
+    "company": "PwC",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.pwc.com/us/en/about-us/purpose-and-values.html",
+    "title": "",
+    "file": "pwc_culture.png",
+    "company": "PwC",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.pwc.com/us/en/about-us/diversity.html",
+    "title": "",
+    "file": "pwc_diversity.png",
+    "company": "PwC",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.ey.com/en_us",
+    "title": "",
+    "file": "ey_homepage.png",
+    "company": "EY",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.ey.com/en_us/about-us",
+    "title": "",
+    "file": "ey_leadership.png",
+    "company": "EY",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.ey.com/en_us/careers",
+    "title": "",
+    "file": "ey_careers.png",
+    "company": "EY",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.ey.com/en_us/careers/experienced-professionals/a-better-working-world",
+    "title": "",
+    "file": "ey_culture.png",
+    "company": "EY",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.ey.com/en_us/diversity-inclusiveness",
+    "title": "",
+    "file": "ey_diversity.png",
+    "company": "EY",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://kpmg.com/us/en/home.html",
+    "title": "",
+    "file": "kpmg_homepage.png",
+    "company": "KPMG",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://kpmg.com/us/en/home/about.html",
+    "title": "",
+    "file": "kpmg_leadership.png",
+    "company": "KPMG",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://kpmg.com/us/en/careers.html",
+    "title": "",
+    "file": "kpmg_careers.png",
+    "company": "KPMG",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://kpmg.com/us/en/home/about/values.html",
+    "title": "",
+    "file": "kpmg_culture.png",
+    "company": "KPMG",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://kpmg.com/us/en/home/about/diversity-and-inclusion.html",
+    "title": "",
+    "file": "kpmg_diversity.png",
+    "company": "KPMG",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.microsoft.com/en-us/",
+    "title": "Microsoft – AI, Cloud, Productivity, Computing, Gaming & Apps",
+    "file": "microsoft_homepage.png",
+    "company": "Microsoft",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.microsoft.com/en-us/about",
+    "title": "Our Mission and Values | About Microsoft",
+    "file": "microsoft_leadership.png",
+    "company": "Microsoft",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://careers.microsoft.com/us/en",
+    "title": "",
+    "file": "microsoft_careers.png",
+    "company": "Microsoft",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.microsoft.com/en-us/about/values",
+    "title": "Our Mission and Values | About Microsoft",
+    "file": "microsoft_culture.png",
+    "company": "Microsoft",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.microsoft.com/en-us/diversity/",
+    "title": "",
+    "file": "microsoft_diversity.png",
+    "company": "Microsoft",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.accenture.com/us-en",
+    "title": "",
+    "file": "accenture_homepage.png",
+    "company": "Accenture",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.accenture.com/us-en/about/leadership/leadership-index",
+    "title": "",
+    "file": "accenture_leadership.png",
+    "company": "Accenture",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.accenture.com/us-en/careers",
+    "title": "",
+    "file": "accenture_careers.png",
+    "company": "Accenture",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.accenture.com/us-en/about/inclusion-diversity/us-workforce",
+    "title": "",
+    "file": "accenture_culture.png",
+    "company": "Accenture",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.accenture.com/us-en/about/inclusion-diversity/index",
+    "title": "",
+    "file": "accenture_diversity.png",
+    "company": "Accenture",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.honeywell.com/us/en",
+    "title": "",
+    "file": "honeywell_homepage.png",
+    "company": "Honeywell",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.honeywell.com/us/en/company",
+    "title": "",
+    "file": "honeywell_leadership.png",
+    "company": "Honeywell",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://careers.honeywell.com/us/en",
+    "title": "",
+    "file": "honeywell_careers.png",
+    "company": "Honeywell",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.honeywell.com/us/en/company/responsibility",
+    "title": "",
+    "file": "honeywell_culture.png",
+    "company": "Honeywell",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.honeywell.com/us/en/company/esg/inclusion-and-diversity",
+    "title": "",
+    "file": "honeywell_diversity.png",
+    "company": "Honeywell",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.pepsico.com/",
+    "title": "",
+    "file": "pepsico_homepage.png",
+    "company": "PepsiCo",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.pepsico.com/our-company/leadership",
+    "title": "",
+    "file": "pepsico_leadership.png",
+    "company": "PepsiCo",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.pepsico.com/our-company/careers",
+    "title": "",
+    "file": "pepsico_careers.png",
+    "company": "PepsiCo",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.pepsico.com/our-impact/esg-topics-a-z/diversity-equity-and-inclusion",
+    "title": "",
+    "file": "pepsico_culture.png",
+    "company": "PepsiCo",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.pepsico.com/our-impact/esg-topics-a-z/diversity-equity-and-inclusion",
+    "title": "",
+    "file": "pepsico_diversity.png",
+    "company": "PepsiCo",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.ibm.com/us-en",
+    "title": "",
+    "file": "ibm_homepage.png",
+    "company": "IBM",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.ibm.com/about",
+    "title": "",
+    "file": "ibm_leadership.png",
+    "company": "IBM",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.ibm.com/careers",
+    "title": "",
+    "file": "ibm_careers.png",
+    "company": "IBM",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.ibm.com/policy/be-equal/",
+    "title": "",
+    "file": "ibm_culture.png",
+    "company": "IBM",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.ibm.com/impact/be-equal",
+    "title": "",
+    "file": "ibm_diversity.png",
+    "company": "IBM",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.sap.com/index.html",
+    "title": "",
+    "file": "sap_homepage.png",
+    "company": "SAP",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.sap.com/about/company/leadership.html",
+    "title": "",
+    "file": "sap_leadership.png",
+    "company": "SAP",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.sap.com/about/careers.html",
+    "title": "",
+    "file": "sap_careers.png",
+    "company": "SAP",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.sap.com/about/company/diversity.html",
+    "title": "",
+    "file": "sap_culture.png",
+    "company": "SAP",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.sap.com/about/company/diversity.html",
+    "title": "",
+    "file": "sap_diversity.png",
+    "company": "SAP",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.adobe.com/",
+    "title": "",
+    "file": "adobe_homepage.png",
+    "company": "Adobe",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.adobe.com/about-adobe/fast-facts.html",
+    "title": "",
+    "file": "adobe_leadership.png",
+    "company": "Adobe",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.adobe.com/careers.html",
+    "title": "",
+    "file": "adobe_careers.png",
+    "company": "Adobe",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.adobe.com/diversity/equity-inclusion.html",
+    "title": "",
+    "file": "adobe_culture.png",
+    "company": "Adobe",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.adobe.com/diversity/equity-inclusion.html",
+    "title": "",
+    "file": "adobe_diversity.png",
+    "company": "Adobe",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.dupont.com/",
+    "title": "",
+    "file": "dupont_homepage.png",
+    "company": "DuPont",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.dupont.com/about.html",
+    "title": "",
+    "file": "dupont_leadership.png",
+    "company": "DuPont",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.dupont.com/careers.html",
+    "title": "",
+    "file": "dupont_careers.png",
+    "company": "DuPont",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.dupont.com/careers.html",
+    "title": "",
+    "file": "dupont_culture.png",
+    "company": "DuPont",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.dupont.com/about/inclusion-diversity.html",
+    "title": "",
+    "file": "dupont_diversity.png",
+    "company": "DuPont",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.basf.com/us/en.html",
+    "title": "",
+    "file": "basf_homepage.png",
+    "company": "BASF",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.basf.com/us/en/who-we-are.html",
+    "title": "",
+    "file": "basf_leadership.png",
+    "company": "BASF",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.basf.com/us/en/careers.html",
+    "title": "",
+    "file": "basf_careers.png",
+    "company": "BASF",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.basf.com/us/en/who-we-are/sustainability/employees.html",
+    "title": "",
+    "file": "basf_culture.png",
+    "company": "BASF",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.basf.com/us/en/who-we-are/sustainability/employees/diversity.html",
+    "title": "",
+    "file": "basf_diversity.png",
+    "company": "BASF",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.dow.com/en-us.html",
+    "title": "",
+    "file": "dow_homepage.png",
+    "company": "Dow",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.dow.com/en-us/about-dow.html",
+    "title": "",
+    "file": "dow_leadership.png",
+    "company": "Dow",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": false,
+    "url": "https://careers.dow.com/",
+    "title": "Dow — careers",
+    "file": "dow_careers.png",
+    "error": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.dow.com/",
+    "company": "Dow",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": false,
+    "url": "https://careers.dow.com/content/life-at-dow/",
+    "title": "Dow — culture",
+    "file": "dow_culture.png",
+    "error": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.dow.com/content/life-at-dow/",
+    "company": "Dow",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.dow.com/en-us/about-dow/inclusion-diversity.html",
+    "title": "",
+    "file": "dow_diversity.png",
+    "company": "Dow",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.bayer.com/en/",
+    "title": "",
+    "file": "bayer_homepage.png",
+    "company": "Bayer",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.bayer.com/en/company/executive-committee",
+    "title": "",
+    "file": "bayer_leadership.png",
+    "company": "Bayer",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://career.bayer.com/en/",
+    "title": "",
+    "file": "bayer_careers.png",
+    "company": "Bayer",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.bayer.com/en/commitment/we-are-bayer",
+    "title": "",
+    "file": "bayer_culture.png",
+    "company": "Bayer",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.bayer.com/en/commitment/diversity-and-inclusion",
+    "title": "",
+    "file": "bayer_diversity.png",
+    "company": "Bayer",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  },
+  {
+    "success": true,
+    "url": "https://www.syngenta.com/",
+    "title": "",
+    "file": "syngenta_homepage.png",
+    "company": "Syngenta",
+    "category": "01_Hero_Banners",
+    "pageType": "homepage"
+  },
+  {
+    "success": true,
+    "url": "https://www.syngenta.com/en/about-syngenta",
+    "title": "",
+    "file": "syngenta_leadership.png",
+    "company": "Syngenta",
+    "category": "02_Leadership",
+    "pageType": "leadership"
+  },
+  {
+    "success": true,
+    "url": "https://www.syngenta.com/en/careers",
+    "title": "",
+    "file": "syngenta_careers.png",
+    "company": "Syngenta",
+    "category": "04_Careers",
+    "pageType": "careers"
+  },
+  {
+    "success": true,
+    "url": "https://www.syngenta.com/en/about-syngenta/our-people",
+    "title": "",
+    "file": "syngenta_culture.png",
+    "company": "Syngenta",
+    "category": "03_Collaboration",
+    "pageType": "culture"
+  },
+  {
+    "success": true,
+    "url": "https://www.syngenta.com/en/about-syngenta/diversity-and-inclusion",
+    "title": "",
+    "file": "syngenta_diversity.png",
+    "company": "Syngenta",
+    "category": "07_Diversity",
+    "pageType": "diversity"
+  }
+]
