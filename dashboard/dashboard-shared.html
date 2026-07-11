@@ -1,0 +1,326 @@
+<title>Daily Ops Dashboard — Shared</title>
+<style>
+  :root {
+    --bg: #F7F4EE;
+    --surface: #FFFFFF;
+    --surface-2: #EFEAE0;
+    --line: #E2DACB;
+    --ink: #211E1A;
+    --ink-dim: #6B655C;
+    --accent: #A8763A;
+    --accent-ink: #5C3F1D;
+    --good: #3F6B4B;
+    --good-bg: #EAF2EC;
+    --warn: #8A6116;
+    --warn-bg: #FBF0DD;
+    --raas: #4A4066;
+    --raas-bg: #EDEBF2;
+    --frameboxx: #2C5C8A;
+    --frameboxx-bg: #E9EFF4;
+    --crumble: #B0563D;
+    --crumble-bg: #F6EAE5;
+    --artmize: #A8763A;
+    --artmize-bg: #F3EBDD;
+    --font-display: Iowan Old Style, "Palatino Linotype", Georgia, serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171511;
+      --surface: #201D18;
+      --surface-2: #2A2620;
+      --line: #3A352C;
+      --ink: #EDE8DE;
+      --ink-dim: #A79C8C;
+      --accent: #D9A34F;
+      --accent-ink: #F1D9AE;
+      --good: #7FBE93;
+      --good-bg: #1D2F22;
+      --warn: #E0B355;
+      --warn-bg: #332711;
+      --raas: #9C90C2;
+      --raas-bg: #262340;
+      --frameboxx: #7FAFD6;
+      --frameboxx-bg: #1D2C3A;
+      --crumble: #E09A80;
+      --crumble-bg: #33221B;
+      --artmize: #D9A34F;
+      --artmize-bg: #332711;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171511; --surface: #201D18; --surface-2: #2A2620; --line: #3A352C;
+    --ink: #EDE8DE; --ink-dim: #A79C8C; --accent: #D9A34F; --accent-ink: #F1D9AE;
+    --good: #7FBE93; --good-bg: #1D2F22; --warn: #E0B355; --warn-bg: #332711;
+    --raas: #9C90C2; --raas-bg: #262340; --frameboxx: #7FAFD6; --frameboxx-bg: #1D2C3A;
+    --crumble: #E09A80; --crumble-bg: #33221B; --artmize: #D9A34F; --artmize-bg: #332711;
+  }
+  :root[data-theme="light"] {
+    --bg: #F7F4EE; --surface: #FFFFFF; --surface-2: #EFEAE0; --line: #E2DACB;
+    --ink: #211E1A; --ink-dim: #6B655C; --accent: #A8763A; --accent-ink: #5C3F1D;
+    --good: #3F6B4B; --good-bg: #EAF2EC; --warn: #8A6116; --warn-bg: #FBF0DD;
+    --raas: #4A4066; --raas-bg: #EDEBF2; --frameboxx: #2C5C8A; --frameboxx-bg: #E9EFF4;
+    --crumble: #B0563D; --crumble-bg: #F6EAE5; --artmize: #A8763A; --artmize-bg: #F3EBDD;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.45;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 16px 64px;
+  }
+  header.masthead {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg);
+    padding: 18px 0 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .masthead-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  h1.title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: 0.2px;
+  }
+  .date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+    white-space: nowrap;
+  }
+  .subline {
+    margin-top: 2px;
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+  }
+
+  section.card {
+    margin-top: 22px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  h2.card-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+
+  /* trends */
+  .trend-item { margin-bottom: 10px; }
+  .trend-item:last-child { margin-bottom: 0; }
+  .trend-item .tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .trend-item p { margin: 3px 0 0; font-size: 0.9rem; }
+
+  /* posting plan brand cards */
+  .brand-card {
+    border-left: 3px solid var(--brand-c);
+    background: var(--brand-bg);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .brand-card:last-child { margin-bottom: 0; }
+  .brand-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .brand-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--brand-c);
+  }
+  .brand-day {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--ink-dim);
+  }
+  .brand-pillar {
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .brand-card p.detail { margin: 4px 0 0; font-size: 0.87rem; color: var(--ink); }
+  .brand-card p.caption { margin: 6px 0 0; font-size: 0.82rem; color: var(--ink-dim); font-style: italic; }
+
+  /* outreach queue */
+  .lead {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .lead:last-child { border-bottom: none; }
+  .lead .brand-tag {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-weight: 700;
+    white-space: nowrap;
+    height: fit-content;
+  }
+  .lead .lead-body { flex: 1; }
+  .lead .lead-name { font-weight: 600; font-size: 0.9rem; }
+  .lead .lead-meta { font-size: 0.78rem; color: var(--ink-dim); margin-top: 1px; }
+  .lead .lead-pitch { font-size: 0.83rem; margin-top: 4px; }
+  .lead .lead-when { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-ink); margin-top: 4px; }
+
+  a.src-link { color: var(--accent-ink); text-decoration: underline; font-size: 0.82rem; }
+
+  footer.card ol { padding-left: 20px; margin: 8px 0 0; font-size: 0.87rem; }
+  footer.card li { margin-bottom: 4px; }
+  footer.card p.note { font-size: 0.8rem; color: var(--ink-dim); margin-top: 12px; }
+
+  ul.links { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 6px; }
+  ul.links li::before { content: "→ "; color: var(--accent); }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="masthead-row">
+      <h1 class="title">Daily Ops</h1>
+      <span class="date" id="today-date">Sat, 11 Jul 2026</span>
+    </div>
+    <p class="subline">Marketing · Posting plans · Outreach — the team-shareable view, refreshed every morning at 6:00 AM IST</p>
+  </header>
+
+  <section class="card">
+    <p class="eyebrow">Marketing</p>
+    <h2 class="card-title">Today's strategies to go viral</h2>
+    <div class="trend-item">
+      <span class="tag">Format</span>
+      <p><strong>"Process reveal" reels are outperforming polished product shots</strong> across Instagram right now — showing the making-of (a cake being iced, a brass showpiece being cast, a client brief turning into a moodboard) gets 2-3x the saves of a static final-product post. Every brand below has a natural process to show.</p>
+    </div>
+    <div class="trend-item">
+      <span class="tag">Hook</span>
+      <p><strong>Open on the objection, not the offer.</strong> "Why your Instagram looks the same as everyone else's" outperforms "Check out our new package" as a first line — say the problem the viewer already has before you say what you sell.</p>
+    </div>
+    <div class="trend-item">
+      <span class="tag">Distribution</span>
+      <p><strong>Post once, cut three ways.</strong> Same footage → 60s Reel (hook-led), 3-slide carousel (quotable line as slide 1), and a Story poll/question sticker to farm replies into DMs. Stop treating platforms as separate content jobs.</p>
+    </div>
+    <div class="trend-item">
+      <span class="tag">Comments</span>
+      <p><strong>Pin a reply that continues the story</strong> instead of a generic "Thanks for watching!" — it keeps people reading the comment section, which the algorithm reads as engagement depth, not just count.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">Posting plan · Saturday</p>
+    <h2 class="card-title">What to post today, per brand</h2>
+
+    <div class="brand-card" style="--brand-c: var(--raas); --brand-bg: var(--raas-bg);">
+      <div class="brand-head"><span class="brand-name">RAAS</span><span class="brand-day">Sat · Service spotlight</span></div>
+      <div class="brand-pillar">Explain one package, not all five</div>
+      <p class="detail">Carousel: "What ₹32,000/month actually gets you" — break down the Signature SMM package (16 posts, 8 reels, story strategy, monthly analytics) into a before/after grid for a real or composite client. Ends on a DM-to-enquire CTA.</p>
+      <p class="caption">Distribution: feed carousel + LinkedIn repost (strip the emoji, add a line about ROI).</p>
+    </div>
+
+    <div class="brand-card" style="--brand-c: var(--frameboxx); --brand-bg: var(--frameboxx-bg);">
+      <div class="brand-head"><span class="brand-name">Frameboxx</span><span class="brand-day">Sat · Free demo promo</span></div>
+      <div class="brand-pillar">Saturday is peak enquiry-browsing day</div>
+      <p class="detail">Reel: 30 seconds inside one free demo class (Video Editing or Motion Graphics — whichever has a session this weekend) ending on "Book your free demo — link in bio." Caption directly answers "Why Frameboxx" objections seen in your enquiry sheet (no experience needed, flexible in-centre/hybrid format).</p>
+      <p class="caption">Distribution: Reel + WhatsApp broadcast to this week's enquiry sheet leads.</p>
+    </div>
+
+    <div class="brand-card" style="--brand-c: var(--crumble); --brand-bg: var(--crumble-bg);">
+      <div class="brand-head"><span class="brand-name">Crumble and Flake</span><span class="brand-day">Sat · Unboxing reel</span></div>
+      <div class="brand-pillar">ASMR-style gift box unboxing</div>
+      <p class="detail">Reel: hands opening a Crumble+Flake gifting box, tissue rustle audio kept in, slow reveal of each item, close on the price/CTA card. Saturday = weekend gifting/dessert-craving intent is highest.</p>
+      <p class="caption">Distribution: Reel + Pinterest pin (gifting boards convert well on weekends).</p>
+    </div>
+
+    <div class="brand-card" style="--brand-c: var(--artmize); --brand-bg: var(--artmize-bg);">
+      <div class="brand-head"><span class="brand-name">The Artmize Home</span><span class="brand-day">Sat · Gift sets</span></div>
+      <div class="brand-pillar">Trays, Jars &amp; Gift Sets collection</div>
+      <p class="detail">Carousel: 4-5 pieces from the Trays, Jars &amp; Gift Sets collection styled as a "hosting gift" flat-lay, price visible on each slide. Saturday audiences are shopping for weekend hosting/gifting — lean into that intent directly in the caption.</p>
+      <p class="caption">Distribution: feed carousel + Pinterest (this collection is the most "save"-able of the six).</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="eyebrow">Outreach queue</p>
+    <h2 class="card-title">Who to follow up with</h2>
+
+    <div class="lead">
+      <span class="brand-tag" style="background: var(--artmize-bg); color: var(--artmize);">Artmize</span>
+      <div class="lead-body">
+        <div class="lead-name">The Artisania — Banjara Hills Rd 12</div>
+        <div class="lead-meta">+91 88972 86263 · ask for owner Spurthi</div>
+        <div class="lead-pitch">Curated antiques/brass/decor store — pitch Artmize as a supplier of affordable sculptural decor.</div>
+        <div class="lead-when">Next follow-up: 15 Jul</div>
+      </div>
+    </div>
+    <div class="lead">
+      <span class="brand-tag" style="background: var(--raas-bg); color: var(--raas);">RAAS</span>
+      <div class="lead-body">
+        <div class="lead-name">The Artisania — Banjara Hills Rd 12</div>
+        <div class="lead-meta">+91 88972 86263 · same contact, different pitch</div>
+        <div class="lead-pitch">Boutique with likely ad-hoc social presence — pitch Essential SMM (₹18k/mo) to professionalise their Instagram.</div>
+        <div class="lead-when">Next follow-up: 14 Jul</div>
+      </div>
+    </div>
+    <div class="lead">
+      <span class="brand-tag" style="background: var(--crumble-bg); color: var(--crumble);">Crumble+Flake</span>
+      <div class="lead-body">
+        <div class="lead-name">Blue Lotus Events &amp; Decors</div>
+        <div class="lead-meta">bluelotusevents.in</div>
+        <div class="lead-pitch">Full-service wedding/event decorator — pitch as default wedding-favour &amp; welcome-hamper supplier.</div>
+        <div class="lead-when">Next follow-up: 14 Jul</div>
+      </div>
+    </div>
+
+    <p class="caption" style="font-size:0.8rem;color:var(--ink-dim);margin-top:12px;">Three trackers feed this queue. The 6 AM refresh advances each one and pulls the next un-contacted lead by priority.</p>
+  </section>
+
+  <footer class="card">
+    <p class="eyebrow">Get this on your Home Screen</p>
+    <h2 class="card-title">Pin the dashboard like an app</h2>
+    <ol>
+      <li>Open this page's link in Safari (iPhone) or Chrome (Android) — not inside an app's in-app browser.</li>
+      <li>Tap the Share icon (iPhone) or the ⋮ menu (Android).</li>
+      <li>Choose <strong>"Add to Home Screen."</strong></li>
+      <li>It'll now open full-screen with no browser bar, like a native app.</li>
+    </ol>
+    <p class="note">This is the shareable version — marketing, posting plans and outreach only. Spending and account details live in a separate private dashboard. Refreshes automatically at 6:00 AM IST; this link stays the same every day.</p>
+  </footer>
+</div>

@@ -1,0 +1,1213 @@
+<title>BizOS — Rishu's Business OS</title>
+<style>
+  :root{
+    --bg:#F7F4EE; --panel:#F1EDE4; --surface:#FFFFFF; --surface-2:#EFEAE0;
+    --line:#E2DACB; --line-soft:#EAE4D7;
+    --ink:#211E1A; --ink-dim:#6B655C; --ink-faint:#9A9187;
+    --accent:#A8763A; --accent-soft:#F3EBDD; --accent-ink:#5C3F1D;
+    --urgent:#B3261E; --urgent-bg:#FBEAE9;
+    --good:#3F6B4B; --good-bg:#EAF2EC;
+    --warn:#8A6116; --warn-bg:#FBF0DD;
+    --raas:#4A4066; --raas-bg:#EDEBF2;
+    --frameboxx:#2C5C8A; --frameboxx-bg:#E9EFF4;
+    --crumble:#B0563D; --crumble-bg:#F6EAE5;
+    --artmize:#A8763A; --artmize-bg:#F3EBDD;
+    --shadow:0 1px 2px rgba(33,30,26,.05),0 4px 16px rgba(33,30,26,.06);
+    --shadow-lg:0 4px 12px rgba(33,30,26,.10),0 16px 48px rgba(33,30,26,.14);
+    --r:10px; --r-lg:14px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --display:Iowan Old Style,"Palatino Linotype",Georgia,serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171511; --panel:#1C1A15; --surface:#201D18; --surface-2:#2A2620;
+      --line:#3A352C; --line-soft:#2E2A22;
+      --ink:#EDE8DE; --ink-dim:#A79C8C; --ink-faint:#7A7264;
+      --accent:#D9A34F; --accent-soft:#332711; --accent-ink:#F1D9AE;
+      --urgent:#E5847C; --urgent-bg:#3A1E1C;
+      --good:#7FBE93; --good-bg:#1D2F22;
+      --warn:#E0B355; --warn-bg:#332711;
+      --raas:#9C90C2; --raas-bg:#262340;
+      --frameboxx:#7FAFD6; --frameboxx-bg:#1D2C3A;
+      --crumble:#E09A80; --crumble-bg:#33221B;
+      --artmize:#D9A34F; --artmize-bg:#332711;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+      --shadow-lg:0 4px 12px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#171511; --panel:#1C1A15; --surface:#201D18; --surface-2:#2A2620;
+    --line:#3A352C; --line-soft:#2E2A22;
+    --ink:#EDE8DE; --ink-dim:#A79C8C; --ink-faint:#7A7264;
+    --accent:#D9A34F; --accent-soft:#332711; --accent-ink:#F1D9AE;
+    --urgent:#E5847C; --urgent-bg:#3A1E1C;
+    --good:#7FBE93; --good-bg:#1D2F22;
+    --warn:#E0B355; --warn-bg:#332711;
+    --raas:#9C90C2; --raas-bg:#262340;
+    --frameboxx:#7FAFD6; --frameboxx-bg:#1D2C3A;
+    --crumble:#E09A80; --crumble-bg:#33221B;
+    --artmize:#D9A34F; --artmize-bg:#332711;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+    --shadow-lg:0 4px 12px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
+  }
+  :root[data-theme="light"]{
+    --bg:#F7F4EE; --panel:#F1EDE4; --surface:#FFFFFF; --surface-2:#EFEAE0;
+    --line:#E2DACB; --line-soft:#EAE4D7;
+    --ink:#211E1A; --ink-dim:#6B655C; --ink-faint:#9A9187;
+    --accent:#A8763A; --accent-soft:#F3EBDD; --accent-ink:#5C3F1D;
+    --urgent:#B3261E; --urgent-bg:#FBEAE9;
+    --good:#3F6B4B; --good-bg:#EAF2EC;
+    --warn:#8A6116; --warn-bg:#FBF0DD;
+    --raas:#4A4066; --raas-bg:#EDEBF2;
+    --frameboxx:#2C5C8A; --frameboxx-bg:#E9EFF4;
+    --crumble:#B0563D; --crumble-bg:#F6EAE5;
+    --artmize:#A8763A; --artmize-bg:#F3EBDD;
+    --shadow:0 1px 2px rgba(33,30,26,.05),0 4px 16px rgba(33,30,26,.06);
+    --shadow-lg:0 4px 12px rgba(33,30,26,.10),0 16px 48px rgba(33,30,26,.14);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;padding:0}
+  input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px;outline:none}
+  input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  a{color:var(--accent-ink)}
+  ::placeholder{color:var(--ink-faint)}
+  @media (prefers-reduced-motion: no-preference){
+    .card,.btn,.nav-item,.task-row,.toast,.modal,.overlay,.pill,.tab{transition:background .15s ease,border-color .15s ease,transform .15s ease,opacity .15s ease,box-shadow .15s ease}
+  }
+
+  .app{display:grid;grid-template-columns:236px 1fr;grid-template-rows:52px 1fr;height:100dvh}
+  /* topbar */
+  .topbar{grid-column:1/3;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--line);position:relative;z-index:20}
+  .logo{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .logo .dot{width:10px;height:10px;border-radius:3px;background:var(--accent);display:inline-block}
+  .searchbox{flex:1;max-width:460px;margin:0 auto;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 12px;color:var(--ink-faint);cursor:pointer;font-size:13px}
+  .searchbox kbd{margin-left:auto;font-family:var(--mono);font-size:11px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--ink-dim)}
+  .top-actions{display:flex;align-items:center;gap:4px;margin-left:auto}
+  .icon-btn{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;font-size:16px;position:relative;color:var(--ink-dim)}
+  .icon-btn:hover{background:var(--surface-2)}
+  .badge{position:absolute;top:2px;right:2px;min-width:16px;height:16px;border-radius:8px;background:var(--urgent);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;padding:0 4px;font-family:var(--mono)}
+  .hamburger{display:none}
+
+  /* sidebar */
+  .sidebar{background:var(--panel);border-right:1px solid var(--line);overflow-y:auto;padding:12px 10px 24px;display:flex;flex-direction:column;gap:2px}
+  .nav-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);padding:14px 10px 6px;font-weight:600}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;color:var(--ink-dim);text-decoration:none;font-weight:500;font-size:13.5px}
+  .nav-item:hover{background:var(--surface-2);color:var(--ink)}
+  .nav-item.active{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+  .nav-item .ico{width:18px;text-align:center;font-size:14px}
+  .biz-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .nav-count{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+
+  /* main */
+  .main{overflow-y:auto;padding:24px;min-width:0}
+  .page{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+  .page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  h1.pt{font-family:var(--display);font-size:24px;margin:0;letter-spacing:.2px;text-wrap:balance}
+  .pt-sub{color:var(--ink-dim);font-size:13px;margin-top:3px}
+  h2.st{font-family:var(--display);font-size:16px;margin:0}
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow)}
+  .card.flat{box-shadow:none}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:900px){.grid2,.grid3,.grid4{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+  .stat .n{font-family:var(--mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+  .stat .c{font-size:11.5px;color:var(--ink-dim);margin-top:2px}
+  .stat.urgent{border-color:var(--urgent);background:var(--urgent-bg)}
+  .stat.urgent .n{color:var(--urgent)}
+
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-weight:600;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+  .btn:hover{background:var(--surface-2)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  :root[data-theme="dark"] .btn.primary,body .btn.primary{color:#fff}
+  .btn.primary:hover{filter:brightness(1.06)}
+  .btn.danger{color:var(--urgent);border-color:var(--urgent)}
+  .btn.sm{padding:4px 10px;font-size:12px}
+  .btn.ghost{border-color:transparent;background:transparent;color:var(--ink-dim)}
+  .btn.ghost:hover{background:var(--surface-2);color:var(--ink)}
+
+  .pill{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .pill.p1{background:var(--urgent-bg);color:var(--urgent)}
+  .pill.p2{background:var(--warn-bg);color:var(--warn)}
+  .pill.p3{background:var(--surface-2);color:var(--ink-dim)}
+  .pill.ok{background:var(--good-bg);color:var(--good)}
+  .pill.warn{background:var(--warn-bg);color:var(--warn)}
+  .pill.urgent{background:var(--urgent-bg);color:var(--urgent)}
+  .pill.neutral{background:var(--surface-2);color:var(--ink-dim)}
+
+  .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .toolbar input[type="search"]{min-width:160px;flex:1;max-width:260px}
+  .toolbar select{font-size:13px;padding:6px 8px}
+
+  /* tasks */
+  .task-group{margin-bottom:8px}
+  .task-group-h{display:flex;align-items:center;gap:8px;padding:10px 4px 6px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .task-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:6px;cursor:grab}
+  .task-row:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+  .task-row.done .t-title{text-decoration:line-through;color:var(--ink-faint)}
+  .task-row.dragging{opacity:.4}
+  .t-check{margin-top:2px;width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+  .t-body{flex:1;min-width:0;cursor:pointer}
+  .t-title{font-weight:600;font-size:13.5px}
+  .t-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px;font-size:11.5px;color:var(--ink-dim)}
+  .t-due.overdue{color:var(--urgent);font-weight:600}
+  .t-due.today{color:var(--warn);font-weight:600}
+
+  /* tables */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+  table.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+  table.tbl th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  table.tbl td{padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  table.tbl tr:last-child td{border-bottom:none}
+  table.tbl tr:hover td{background:var(--surface-2)}
+  table.tbl td .amt{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.tbl select,table.tbl input[type="date"]{padding:4px 6px;font-size:12px;border-radius:6px;background:transparent}
+  .lead-name{font-weight:600;cursor:pointer}
+  .lead-name:hover{color:var(--accent-ink);text-decoration:underline}
+
+  /* tabs */
+  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto}
+  .tab{padding:8px 14px;font-weight:600;font-size:13px;color:var(--ink-dim);border-bottom:2px solid transparent;white-space:nowrap;text-decoration:none}
+  .tab:hover{color:var(--ink)}
+  .tab.active{color:var(--accent-ink);border-bottom-color:var(--accent)}
+
+  /* brand cards */
+  .brand-card{border-left:3px solid var(--bc,var(--accent));background:var(--bb,var(--surface-2));border-radius:var(--r);padding:12px 14px}
+  .brand-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .brand-name{font-weight:700;font-size:14px;color:var(--bc,var(--accent))}
+  .brand-day{font-family:var(--mono);font-size:11px;color:var(--ink-dim)}
+  .brand-pillar{font-size:12.5px;font-weight:600;margin-top:4px}
+  .brand-card p{margin:4px 0 0;font-size:13px}
+  .brand-card .cap{color:var(--ink-dim);font-size:12px;font-style:italic}
+  .mk-extra{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .mk-chip{font-family:var(--mono);font-size:10.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 7px;color:var(--ink-dim)}
+
+  /* overlay & modal */
+  .overlay{position:fixed;inset:0;background:rgba(20,17,12,.45);display:grid;place-items:center;z-index:100;padding:16px;backdrop-filter:blur(2px)}
+  .modal{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);width:100%;max-width:560px;max-height:85dvh;overflow-y:auto;padding:20px}
+  .modal h3{font-family:var(--display);font-size:17px;margin:0 0 14px}
+  .frm{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .frm .full{grid-column:1/3}
+  .frm label{display:flex;flex-direction:column;gap:4px;font-size:11.5px;font-weight:600;color:var(--ink-dim)}
+  .frm textarea{min-height:70px;resize:vertical}
+  .modal-foot{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  .modal-foot .spacer{flex:1}
+  @media(max-width:560px){.frm{grid-template-columns:1fr}.frm .full{grid-column:1}}
+
+  /* palette */
+  .palette{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);width:100%;max-width:560px;overflow:hidden;align-self:start;margin-top:10vh}
+  .palette input{width:100%;border:none;border-bottom:1px solid var(--line);border-radius:0;padding:14px 16px;font-size:15px;background:transparent}
+  .pal-list{max-height:50vh;overflow-y:auto;padding:6px}
+  .pal-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;font-size:13.5px}
+  .pal-item .ico{width:20px;text-align:center}
+  .pal-item .sub{margin-left:auto;font-size:11px;color:var(--ink-faint);font-family:var(--mono)}
+  .pal-item.sel{background:var(--accent-soft);color:var(--accent-ink)}
+  .pal-empty{padding:20px;text-align:center;color:var(--ink-faint);font-size:13px}
+
+  /* notifications */
+  .notif-panel{position:fixed;top:56px;right:16px;width:min(380px,calc(100vw - 24px));max-height:70vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);z-index:100;padding:8px}
+  .notif{display:flex;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;align-items:flex-start}
+  .notif:hover{background:var(--surface-2)}
+  .notif .nt{font-weight:600;font-size:13px}
+  .notif .nb{font-size:12px;color:var(--ink-dim);margin-top:1px}
+  .notif.unread .nt::after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-left:6px}
+
+  /* toast */
+  .toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:13px;font-weight:600;opacity:0;z-index:200;box-shadow:var(--shadow-lg);pointer-events:none}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* copilot */
+  .chat{display:flex;flex-direction:column;gap:10px;min-height:200px}
+  .msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13.5px;white-space:pre-wrap}
+  .msg.user{align-self:flex-end;background:var(--accent-soft);color:var(--accent-ink);border-bottom-right-radius:4px}
+  .msg.ai{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--ink-dim);cursor:pointer}
+  .chip:hover{border-color:var(--accent);color:var(--accent-ink)}
+  .chat-input{display:flex;gap:8px;margin-top:12px}
+  .chat-input input{flex:1}
+
+  /* bars */
+  .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12.5px}
+  .bar-label{width:130px;flex-shrink:0;color:var(--ink-dim);text-align:right}
+  .bar-track{flex:1;height:16px;background:var(--surface-2);border-radius:5px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:5px;background:var(--bc,var(--accent))}
+  .bar-val{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);width:70px}
+
+  .agenda-day{margin-bottom:14px}
+  .agenda-date{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .agenda-item{display:flex;gap:10px;align-items:center;padding:7px 10px;background:var(--surface);border:1px solid var(--line-soft);border-radius:8px;margin-bottom:6px;font-size:13px}
+
+  .doc-card{display:flex;flex-direction:column;gap:4px;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink)}
+  .doc-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+  .doc-card .dt{font-weight:600;font-size:13.5px}
+  .doc-card .dd{font-size:12px;color:var(--ink-dim)}
+
+  .empty{padding:28px;text-align:center;color:var(--ink-faint);font-size:13px;border:1px dashed var(--line);border-radius:var(--r)}
+  .note-box{font-size:12px;color:var(--ink-dim);background:var(--surface-2);border-radius:8px;padding:10px 12px}
+  .kbd{font-family:var(--mono);font-size:11px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+
+  /* mobile */
+  @media(max-width:900px){
+    .app{grid-template-columns:1fr}
+    .sidebar{position:fixed;top:52px;left:0;bottom:0;width:250px;z-index:50;transform:translateX(-100%);box-shadow:var(--shadow-lg)}
+    .sidebar.open{transform:translateX(0)}
+    @media (prefers-reduced-motion: no-preference){.sidebar{transition:transform .2s ease}}
+    .hamburger{display:grid}
+    .main{padding:16px}
+    .searchbox{max-width:none}
+    .searchbox kbd{display:none}
+  }
+</style>
+
+<div id="root"></div>
+<div id="layer"></div>
+
+<!--
+  AI DATA ISLAND — regenerated by the 6:00 AM IST routine.
+  RULES FOR THE ROUTINE:
+  1. Only replace the JSON inside this script tag. Never edit app code above/below.
+  2. Lead/expense/seedTask IDs are permanent. Never remove, rename, or reuse an ID.
+     New records get NEW ids (and new lead ids also go into "newLeadIds" for that day).
+  3. User edits live in the browser (localStorage) keyed by these IDs and always
+     override fields here at runtime — refreshing this data cannot overwrite them.
+  4. posting/trends/insights are fully replaced daily. generatedAt must be updated.
+-->
+<script id="ai-data" type="application/json">
+{
+  "version": 1,
+  "generatedAt": "11 Jul 2026",
+  "businesses": [
+    {"id":"raas","name":"RAAS Digital Media","short":"RAAS","tagline":"Social media, branding & corporate communication studio","cvar":"raas"},
+    {"id":"frameboxx","name":"Frameboxx Himayatnagar","short":"Frameboxx","tagline":"Animation, VFX & design institute — Hyderabad","cvar":"frameboxx"},
+    {"id":"crumble","name":"Crumble and Flake","short":"Crumble+Flake","tagline":"Artisanal bakery & premium gifting boxes","cvar":"crumble"},
+    {"id":"artmize","name":"The Artmize Home","short":"Artmize","tagline":"Home décor brand — artefacts, figurines & gifting","cvar":"artmize"}
+  ],
+  "newLeadIds": [],
+  "leads": [
+    {"id":"am-artisania","business":"artmize","name":"The Artisania","cat":"Decor & artefacts store","area":"Banjara Hills Rd 12","phone":"+91 88972 86263","pitch":"Curated antiques/brass/decor store. Pitch affordable sculptural decor to widen their mid-price range. Ask for owner Spurthi.","priority":"HIGH","status":"Not contacted","next":"2026-07-15","source":"Artmize B2B tracker"},
+    {"id":"am-yellow-verandah","business":"artmize","name":"Yellow Verandah","cat":"Home decor & furniture store","area":"Banjara Hills Rd 10","phone":"+91 96180 49302","pitch":"Boutique known for statement pieces — strong fit for figurines and vases. Pitch wholesale/consignment.","priority":"HIGH","status":"Not contacted","next":"2026-07-15","source":"Artmize B2B tracker"},
+    {"id":"am-la-muse","business":"artmize","name":"La Muse","cat":"Luxury home decor store","area":"Kavuri Hills, Madhapur","phone":"+91 78933 43874","pitch":"Decor-only store (wall art, clocks, accents). Pitch trays, vases, gifting SKUs at trade price.","priority":"HIGH","status":"Not contacted","next":"2026-07-16","source":"Artmize B2B tracker"},
+    {"id":"am-zoi","business":"artmize","name":"The Zoi Store","cat":"Luxury designer decor store","area":"Banjara Hills","phone":"+91 98496 11011","pitch":"Small designer store — easier to get a meeting. Pitch a starter consignment shelf.","priority":"HIGH","status":"Not contacted","next":"2026-07-16","source":"Artmize B2B tracker"},
+    {"id":"am-arteriors","business":"artmize","name":"The Arteriors","cat":"Luxury decor & swings store","area":"Narsingi / Kokapet","phone":"","pitch":"Premium artefacts store near new villa communities. Pitch artefact range for villa buyers.","priority":"HIGH","status":"Not contacted","next":"2026-07-17","source":"Artmize B2B tracker"},
+    {"id":"am-winnkraft","business":"artmize","name":"Winnkraft","cat":"Premium decor & handicrafts (wholesaler)","area":"Nallagandla","phone":"+91 96529 45588","pitch":"Wholesaler + gift shop — could stock Artmize and cross-supply. Good gifting-season partner.","priority":"HIGH","status":"Not contacted","next":"2026-07-17","source":"Artmize B2B tracker"},
+    {"id":"am-trove","business":"artmize","name":"Trove Craft India","cat":"Home decor & gifting shop","area":"Banjara Hills Rd 12","phone":"+91 73960 18574","pitch":"Instagram-active curated store that ships globally. Pitch made-for-gifting SKUs.","priority":"HIGH","status":"Not contacted","next":"2026-07-18","source":"Artmize B2B tracker"},
+    {"id":"am-baywindow","business":"artmize","name":"Bay Window","cat":"Premium designer furniture","area":"Jubilee Hills Rd 45","phone":"+91 96188 69911","pitch":"Reviews praise their 'furniture and artefacts' — pitch accent decor supply to complete looks.","priority":"HIGH","status":"Not contacted","next":"2026-07-18","source":"Artmize B2B tracker"},
+    {"id":"am-nhance","business":"artmize","name":"Nhance","cat":"Luxury furniture + decor accessories","area":"Jubilee Hills Rd 45","phone":"+91 94590 57777","pitch":"Stocks artefacts, wall art, planters. Pitch mid-premium accent range to broaden price points.","priority":"HIGH","status":"Not contacted","next":"2026-07-19","source":"Artmize B2B tracker"},
+    {"id":"am-empire","business":"artmize","name":"Empire Home","cat":"Furniture & home goods","area":"Banjara Hills Rd 12","phone":"+91 99333 30079","pitch":"Furniture showroom — needs decor for display styling and add-on sales. Pitch display-styling bundle.","priority":"HIGH","status":"Not contacted","next":"2026-07-19","source":"Artmize B2B tracker"},
+    {"id":"am-shaaranga","business":"artmize","name":"Shaaranga","cat":"Handicrafts, decor & gifting","area":"Jubilee Hills Rd 36","phone":"+91 93900 98900","pitch":"High-footfall handicrafts/gifting store (4.9★, 697 reviews). Pitch contemporary decor line.","priority":"HIGH","status":"Not contacted","next":"2026-07-20","source":"Artmize B2B tracker"},
+    {"id":"am-manglam","business":"artmize","name":"Manglam Handicrafts","cat":"Handicrafts emporium & art gallery","area":"Banjara Hills Rd 12","phone":"+91 98665 02424","pitch":"3-storey emporium incl. corporate gifting. Pitch corporate gifting catalogue + modern decor range.","priority":"HIGH","status":"Not contacted","next":"2026-07-20","source":"Artmize B2B tracker"},
+    {"id":"am-colosseum","business":"artmize","name":"The Colosseum","cat":"Luxury interior destination","area":"Jubilee Hills Rd 45","phone":"+91 73311 00401","pitch":"'India's largest luxury home interior destination' — long sales cycle, big volume potential.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-22","source":"Artmize B2B tracker"},
+    {"id":"am-quadro","business":"artmize","name":"Quadro Living","cat":"Premium furniture","area":"Jubilee Hills Rd 45","phone":"+91 79979 98836","pitch":"Italian/German furniture showroom — pitch decor for vignette styling and add-on retail.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-22","source":"Artmize B2B tracker"},
+    {"id":"am-deitalia","business":"artmize","name":"Dē Italia","cat":"Luxury furniture","area":"Jubilee Hills Rd 36","phone":"+91 97979 73326","pitch":"Showroom styling decor + closing gifts (they already gift showpieces per reviews).","priority":"MEDIUM","status":"Not contacted","next":"2026-07-23","source":"Artmize B2B tracker"},
+    {"id":"am-bontrue-bh","business":"artmize","name":"Bontrue (Banjara Hills)","cat":"Premium furniture","area":"Banjara Hills Rd 12","phone":"+91 89770 14141","pitch":"High-volume chain; gifts showpieces with purchases — pitch as their gifting/decor supplier.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-23","source":"Artmize B2B tracker"},
+    {"id":"am-bontrue-mall","business":"artmize","name":"Bontrue (Sarath City Mall)","cat":"Premium furniture","area":"Kondapur","phone":"+91 99499 05281","pitch":"Second Bontrue outlet — same pitch, mall footfall.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-24","source":"Artmize B2B tracker"},
+    {"id":"am-orangetree","business":"artmize","name":"Orange Tree","cat":"Lighting & furniture","area":"Banjara Hills","phone":"+91 63038 15699","pitch":"Natural-material brand with own decor line — pitch the gaps in their range.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-24","source":"Artmize B2B tracker"},
+    {"id":"am-d8","business":"artmize","name":"Design Eight (D8)","cat":"Furniture experience store","area":"Jubilee Hills Rd 36","phone":"+91 91006 66923","pitch":"Imported furniture store — pitch decor styling for displays.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-25","source":"Artmize B2B tracker"},
+
+    {"id":"rs-artisania","business":"raas","name":"The Artisania","cat":"Decor boutique","area":"Banjara Hills Rd 12","phone":"+91 88972 86263","pitch":"Strong product, likely ad-hoc social presence. Pitch Essential SMM (₹18k/mo) to match their premium in-store aesthetic.","priority":"HIGH","status":"Not contacted","next":"2026-07-14","source":"Boutique retail cluster"},
+    {"id":"rs-yellow-verandah","business":"raas","name":"Yellow Verandah","cat":"Decor boutique","area":"Banjara Hills Rd 10","phone":"+91 96180 49302","pitch":"Statement pieces, inconsistent content. Pitch Signature SMM (₹32k/mo) — reels + calendar.","priority":"HIGH","status":"Not contacted","next":"2026-07-14","source":"Boutique retail cluster"},
+    {"id":"rs-lamuse","business":"raas","name":"La Muse","cat":"Luxury decor store","area":"Kavuri Hills","phone":"+91 78933 43874","pitch":"High-AOV customers respond to premium visual storytelling. Pitch Brand Identity + SMM bundle.","priority":"HIGH","status":"Not contacted","next":"2026-07-15","source":"Boutique retail cluster"},
+    {"id":"rs-zoi","business":"raas","name":"The Zoi Store","cat":"Designer decor store","area":"Banjara Hills","phone":"+91 98496 11011","pitch":"Founder-run — easy meeting. Pitch Essential SMM as entry package.","priority":"HIGH","status":"Not contacted","next":"2026-07-15","source":"Boutique retail cluster"},
+    {"id":"rs-trove","business":"raas","name":"Trove Craft India","cat":"Decor & gifting shop","area":"Banjara Hills Rd 12","phone":"+91 73960 18574","pitch":"Already IG-active, ships globally — pitch Luxe package as a scale-up partner, not an introduction.","priority":"HIGH","status":"Not contacted","next":"2026-07-16","source":"Boutique retail cluster"},
+    {"id":"rs-shaaranga","business":"raas","name":"Shaaranga","cat":"Handicrafts & gifting","area":"Jubilee Hills Rd 36","phone":"+91 93900 98900","pitch":"High footfall, traditional positioning — pitch a modern content refresh for younger buyers.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-17","source":"Boutique retail cluster"},
+    {"id":"rs-manglam","business":"raas","name":"Manglam Handicrafts","cat":"Handicrafts emporium","area":"Banjara Hills Rd 12","phone":"+91 98665 02424","pitch":"Corporate gifting arm — pitch Signature SMM + LinkedIn corporate-gifting content angle.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-17","source":"Boutique retail cluster"},
+    {"id":"rs-baywindow","business":"raas","name":"Bay Window","cat":"Designer furniture","area":"Jubilee Hills Rd 45","phone":"+91 96188 69911","pitch":"Pitch UGC content production to showcase full-room looks.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-18","source":"Boutique retail cluster"},
+    {"id":"rs-nhance","business":"raas","name":"Nhance","cat":"Luxury furniture + decor","area":"Jubilee Hills Rd 45","phone":"+91 94590 57777","pitch":"Pitch Strategy Package (₹12k) first as a low-commitment entry point.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-18","source":"Boutique retail cluster"},
+    {"id":"rs-research-fnb","business":"raas","name":"Research queue: new F&B / cafe openings","cat":"Restaurants · Cafes · Cloud kitchens","area":"Banjara Hills / Jubilee Hills / Gachibowli","phone":"","pitch":"New F&B launches almost always need launch-phase social media. Check Zomato/Google Maps 'recently opened' weekly — the 6 AM routine adds real names here as they're found.","priority":"RESEARCH","status":"Research","next":"","source":"Weekly research","kind":"research"},
+    {"id":"rs-research-thub","business":"raas","name":"Research queue: T-Hub / HITEC City startups","cat":"Startups · Tech companies","area":"Gachibowli / HITEC City","phone":"","pitch":"Growth-stage startups need investor-grade branding (RAAS's IPO/corporate-communication specialty). Routine checks T-Hub's public portfolio for recently funded companies.","priority":"RESEARCH","status":"Research","next":"","source":"Weekly research","kind":"research"},
+
+    {"id":"cf-bluelotus","business":"crumble","name":"Blue Lotus Events & Decors","cat":"Wedding & event decor","area":"Hyderabad","phone":"","link":"https://bluelotusevents.in/","pitch":"Full-service decorator — pitch Crumble+Flake as their default wedding-favour and welcome-hamper supplier (₹999–15,000 fits guest budgets).","priority":"HIGH","status":"Not contacted","next":"2026-07-14","source":"Event planner research"},
+    {"id":"cf-navrang","business":"crumble","name":"Navrang Celebrations","cat":"Stage & venue decoration","area":"Hyderabad","phone":"","link":"https://www.navrangcelebrations.com/services/stage-decoration","pitch":"Large weddings/corporate events — pitch bulk return-gift boxes and festive hampers.","priority":"HIGH","status":"Not contacted","next":"2026-07-14","source":"Event planner research"},
+    {"id":"cf-prashasta","business":"crumble","name":"Prashasta Events","cat":"Weddings & corporate events","area":"Hyderabad","phone":"","link":"https://prashastaevents.com/","pitch":"Broad event range incl. corporate — pitch wedding favours AND corporate gifting in one call.","priority":"HIGH","status":"Not contacted","next":"2026-07-15","source":"Event planner research"},
+    {"id":"cf-spevents","business":"crumble","name":"SP Events","cat":"Wedding & event decor","area":"Hyderabad","phone":"","link":"https://www.wedmegood.com/profile/SP-Events-25625450","pitch":"Table-styling-focused — pitch gifting boxes as centerpiece-adjacent guest favours.","priority":"HIGH","status":"Not contacted","next":"2026-07-15","source":"Event planner research"},
+    {"id":"cf-vividh","business":"crumble","name":"Vividh Wedding Planners","cat":"Wedding decor & themed setups","area":"Hyderabad","phone":"","link":"https://www.instagram.com/vividhweddingplanners/","pitch":"Instagram-active planner — good fit for consignment/referral-commission on return gifts.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-16","source":"Event planner research"},
+    {"id":"cf-saiflower","business":"crumble","name":"Sai Flower Decorations","cat":"Floral & wedding decor","area":"Hyderabad","phone":"","link":"https://www.wedmegood.com/profile/Sai-Flower-Decorations-3523487","pitch":"Cross-sell — floral + gifting bundles for wedding welcome kits.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-16","source":"Event planner research"},
+    {"id":"cf-hsevents","business":"crumble","name":"HS Events & Decorations","cat":"Wedding decor & styling","area":"Hyderabad","phone":"","link":"https://www.weddingwire.in/wedding-decorators/hs-events-&-decorations-hyderabad--e110320","pitch":"Pitch a standard return-gift package planners can upsell to couples.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-17","source":"Event planner research"},
+    {"id":"cf-hydevents","business":"crumble","name":"Hyd Events And Decor","cat":"Event decor & styling","area":"Hyderabad","phone":"","link":"https://www.wedmegood.com/profile/Hyd-Events-And-Decor-2992890","pitch":"Bundle pitch across multiple planners at once to save outreach time.","priority":"MEDIUM","status":"Not contacted","next":"2026-07-17","source":"Event planner research"},
+    {"id":"cf-research-corp","business":"crumble","name":"Research queue: corporate HR/admin (Diwali gifting)","cat":"IT · Banks · Real estate · Law · Hospitals · Hotels","area":"HITEC City / Gachibowli / Banjara Hills","phone":"","pitch":"Corporate festive gifting is the highest-AOV channel (up to ₹15,000/box). Start outreach in August — premium slots book ~45 days before Diwali. Routine surfaces real HR/admin contacts via research.","priority":"RESEARCH","status":"Research","next":"2026-08-01","source":"Festive pipeline","kind":"research"},
+    {"id":"cf-research-retail","business":"crumble","name":"Research queue: boutique cafes & gift retailers","cat":"Retail stockists / consignment","area":"Banjara Hills / Jubilee Hills","phone":"","pitch":"Same boutique cluster mapped for Artmize (Trove, Shaaranga…) also stocks edible gifting. Approach with a small consignment trial.","priority":"RESEARCH","status":"Research","next":"","source":"Retail pipeline","kind":"research"},
+
+    {"id":"fb-muzafar","business":"frameboxx","name":"Mohammed Muzafar — Video Editing","cat":"Admission enquiry (walk-in form)","area":"Hyderabad","phone":"9573139578","pitch":"10th pass, wants a career in video editing. Prefers morning contact 10 AM–1 PM. Source: Instagram.","priority":"HIGH","status":"Not contacted","next":"2026-07-12","source":"Walk-in applications sheet"},
+    {"id":"fb-deepika","business":"frameboxx","name":"GVBS Lakshmi Deepika — Motion Graphics","cat":"Admission enquiry (walk-in form)","area":"Hyderabad","phone":"9849347322","pitch":"12th/Intermediate 2026, interested in Motion Graphics, evening batch 5–8 PM.","priority":"HIGH","status":"Not contacted","next":"2026-07-12","source":"Walk-in applications sheet"}
+  ],
+  "expenses": [
+    {"id":"exp-bobcard-jul","date":"2026-07-10","vendor":"BOBCARD (…6303) — bill","amount":25528.05,"category":"Credit card","flag":"urgent","note":"OVERDUE. Minimum due ₹3,667.95 was due 5 Jul. Pay to avoid card block / CIBIL impact. Helpline 022-41683738."},
+    {"id":"exp-ghmc-jul","date":"2026-07-04","vendor":"GHMC property tax","amount":7452,"category":"Tax / utilities","flag":"warn","note":"Bill via Google Pay (account name Rajender Pal Singh). Verify whether paid."},
+    {"id":"exp-zepto-0630","date":"2026-06-30","vendor":"Zepto (UPI)","amount":339,"category":"Quick-commerce","flag":"","note":""},
+    {"id":"exp-swiggy-0627","date":"2026-06-27","vendor":"Swiggy Food","amount":641,"category":"Food delivery","flag":"","note":""},
+    {"id":"exp-blinkit-0627","date":"2026-06-27","vendor":"Blinkit (UPI)","amount":398,"category":"Quick-commerce","flag":"","note":""},
+    {"id":"exp-zepto-0623","date":"2026-06-23","vendor":"Zepto (UPI)","amount":485,"category":"Quick-commerce","flag":"","note":""}
+  ],
+  "seedTasks": [
+    {"id":"seed-0711-bobcard","title":"Pay BOBCARD minimum due ₹3,668 (card …6303)","business":"","priority":"P1","due":"2026-07-11","category":"Finance","notes":"Total outstanding ₹25,528.05. Overdue since 5 Jul — pay minimum immediately to protect CIBIL."},
+    {"id":"seed-0711-ghmc","title":"Verify GHMC property tax ₹7,452 was paid","business":"","priority":"P2","due":"2026-07-12","category":"Finance","notes":"Bill arrived via Google Pay on 4 Jul."},
+    {"id":"seed-0711-artisania-artmize","title":"Call The Artisania — Artmize supply pitch","business":"artmize","priority":"P2","due":"2026-07-15","category":"Outreach","notes":"+91 88972 86263 · ask for Spurthi. Pitch affordable sculptural decor."},
+    {"id":"seed-0711-artisania-raas","title":"Call The Artisania — RAAS SMM pitch","business":"raas","priority":"P2","due":"2026-07-14","category":"Outreach","notes":"Same store, separate pitch: Essential SMM ₹18k/mo."},
+    {"id":"seed-0711-bluelotus","title":"Contact Blue Lotus Events — C+F wedding favours","business":"crumble","priority":"P2","due":"2026-07-14","category":"Outreach","notes":"bluelotusevents.in — wedding-favour / welcome-hamper supplier pitch."},
+    {"id":"seed-0711-fb-callbacks","title":"Call Frameboxx walk-in leads (Muzafar, Deepika)","business":"frameboxx","priority":"P1","due":"2026-07-12","category":"Admissions","notes":"Muzafar: mornings 10–1 (Video Editing). Deepika: evenings 5–8 (Motion Graphics)."},
+    {"id":"seed-0711-post-all","title":"Publish today's posts for all 4 brands","business":"","priority":"P2","due":"2026-07-11","category":"Marketing","notes":"See Marketing Planner for today's per-brand plan."}
+  ],
+  "posting": {
+    "date": "2026-07-11",
+    "day": "Saturday",
+    "plans": [
+      {"business":"raas","pillar":"Service spotlight — explain one package, not all five","idea":"Carousel: \"What ₹32,000/month actually gets you\" — break the Signature SMM package (16 posts, 8 reels, story strategy, monthly analytics) into a before/after grid. End on a DM-to-enquire CTA.","distribution":"Feed carousel + LinkedIn repost (strip emoji, add an ROI line)","hook":"Most brands don't need more content. They need the right 24 pieces.","cta":"DM 'SIGNATURE' for a free content audit","hashtags":"#socialmediamanagement #hyderabadbusiness #brandstrategy #smmagency","bestTime":"11:30 AM"},
+      {"business":"frameboxx","pillar":"Free demo promo — Saturday is peak enquiry-browsing day","idea":"Reel: 30 seconds inside one free demo class (Video Editing or Motion Graphics) ending on \"Book your free demo — link in bio.\" Caption answers real objections from the enquiry sheet: no experience needed, in-centre/hybrid formats.","distribution":"Reel + WhatsApp broadcast to this week's enquiry leads","hook":"No portfolio. No experience. That's exactly who this class is for.","cta":"Book your free demo — link in bio","hashtags":"#animationcourse #vfx #hyderabadstudents #careerindesign #frameboxx","bestTime":"5:00 PM"},
+      {"business":"crumble","pillar":"ASMR unboxing — weekend gifting intent peaks Saturday","idea":"Reel: hands opening a gifting box, tissue rustle kept in, slow reveal of each item, close on the price/CTA card.","distribution":"Reel + Pinterest pin (gifting boards convert on weekends)","hook":"The most thoughtful box in the room — opened slowly.","cta":"Order for Sunday delivery — DM or link in bio","hashtags":"#giftbox #hyderabadbakery #corporategifting #dessertbox","bestTime":"12:30 PM"},
+      {"business":"artmize","pillar":"Trays, Jars & Gift Sets — weekend hosting intent","idea":"Carousel: 4–5 pieces from the Trays, Jars & Gift Sets collection styled as a \"hosting gift\" flat-lay, price visible on each slide.","distribution":"Feed carousel + Pinterest (the most save-able collection of the six)","hook":"Showing up empty-handed is a choice. A bad one.","cta":"Prices on every slide — DM to order","hashtags":"#homedecor #giftsets #hyderabadhomes #tablescape #artmize","bestTime":"6:30 PM"}
+    ]
+  },
+  "trends": [
+    {"tag":"Format","title":"Process-reveal reels beat polished product shots","body":"Making-of content (cake being iced, brass being cast, a brief becoming a moodboard) is pulling 2–3× the saves of static final-product posts. Every one of your brands has a natural process to show."},
+    {"tag":"Hook","title":"Open on the objection, not the offer","body":"\"Why your Instagram looks the same as everyone else's\" outperforms \"Check out our new package.\" Say the problem the viewer already has before you say what you sell."},
+    {"tag":"Distribution","title":"Post once, cut three ways","body":"Same footage → 60s hook-led Reel, 3-slide carousel (quotable line as slide 1), and a Story poll to farm replies into DMs."},
+    {"tag":"Comments","title":"Pin a reply that continues the story","body":"Beats a generic 'thanks!' — keeps people reading the comment section, which the algorithm reads as engagement depth."}
+  ],
+  "insights": [
+    "The Artisania appears in both the Artmize and RAAS pipelines — one visit, two pitches. Book it as a single meeting and lead with the supply pitch.",
+    "Crumble+Flake corporate Diwali outreach must start by early August: premium gifting slots book ~45 days out.",
+    "Frameboxx has two uncontacted walk-in leads from this week's form — admission leads decay fast; call within 48h.",
+    "Your only tracked liability is the BOBCARD balance. Clearing the ₹3,668 minimum today is the highest-leverage 5 minutes on this list."
+  ],
+  "products": {
+    "artmize":[
+      {"name":"Brass & Vastu Collection","detail":"27 pieces · ₹639–3,199 · elephants, horses, fortune symbols"},
+      {"name":"Figurines & Sculptures","detail":"56 pieces · ₹2,049–4,849 · contemporary sculptural accents"},
+      {"name":"Vases & Vessels","detail":"19 pieces · artisanal vases"},
+      {"name":"Artificial Botanicals","detail":"23 pieces · forever-in-bloom stems"},
+      {"name":"Lighting & Candle Decor","detail":"14 pieces · incl. Gold Ring tealight holder ₹3,249"},
+      {"name":"Trays, Jars & Gift Sets","detail":"7 pieces · made for gifting"}
+    ],
+    "raas":[
+      {"name":"Essential SMM","detail":"₹18,000/mo · 12 posts + 4 reels + calendar + monthly report"},
+      {"name":"Signature SMM","detail":"₹32,000/mo · 16 posts + 8 reels + story strategy + strategy call"},
+      {"name":"Luxe SMM","detail":"₹50–75,000/mo · 20+ posts, 12–15 reels, full creative direction"},
+      {"name":"Brand Identity","detail":"₹25k Startup / ₹45k Signature / ₹70k+ Luxe"},
+      {"name":"Strategy Package","detail":"₹12,000 · competitor analysis, pillars, growth plan"},
+      {"name":"UGC Production","detail":"₹8,000–30,000+ · creator-style videos"}
+    ],
+    "crumble":[
+      {"name":"Gifting boxes","detail":"₹999–15,000 · artisanal premium gifting"},
+      {"name":"Corporate gifting","detail":"IT, banks, real estate, law, hospitals, hotels, HR/admin teams"},
+      {"name":"Festive gifting","detail":"Diwali · Christmas · New Year · Rakhi · Women's/Mother's/Father's Day · launches & conferences"}
+    ],
+    "frameboxx":[
+      {"name":"Video Editing","detail":"Top walk-in demand — morning batches requested"},
+      {"name":"Motion Graphics","detail":"Evening-batch demand from recent enquiries"},
+      {"name":"Graphic Design","detail":"Highest internship-application volume"},
+      {"name":"Film & Direction","detail":"Strong applicant interest"},
+      {"name":"Photography · Social Media & Content","detail":"Secondary tracks"}
+    ]
+  },
+  "docs": [
+    {"title":"Artmize B2B Outreach Tracker","biz":"artmize","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/1qw8Ank4HXYbtxJ70PdYmh34AU5u1KWA3JbXz2rpIdoA/edit"},
+    {"title":"RAAS Client Leads Tracker","biz":"raas","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/1z1-sVMPAMa3soOekFtFNUleqHyRpk0tLIOYZNWpwtJU/edit"},
+    {"title":"Crumble and Flake B2B Gifting Leads","biz":"crumble","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/1BQyscFw7ztzY35JUJcfgUTUf9BG65Jp5EIKRyQrhtTk/edit"},
+    {"title":"Daily Spending Log (Gmail-tracked)","biz":"","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/1thVDdva1prW2mU4wB2sjEakGPKL4mCv2Ji8uhBX-bUA/edit"},
+    {"title":"Artmize Trade Catalogue 2026","biz":"artmize","type":"Doc","url":"https://docs.google.com/document/d/1Vle_j7rQ9Zbt5Yk-ZQ0pRoy1H1ko-68zdXNm3KFVy-g/edit"},
+    {"title":"RAAS Service Packages & Pricing","biz":"raas","type":"Doc","url":"https://docs.google.com/document/d/1P1dWBWW3TXQExv46irGe_G-oyNUl8hUWOJovYt1PyE8/edit"},
+    {"title":"RAAS × IPO Partnership Deck","biz":"raas","type":"Slides","url":"https://docs.google.com/presentation/d/1FzH0tWPRcrSfw_g3lmQg7CewxJQzaJdUSzQQW3IVGmE/edit"},
+    {"title":"Frameboxx Walk-in Applications","biz":"frameboxx","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/12ZFRiHwXJlkN0IBxOAFJFxDbUJGOMr5tLl6MqugyTHE/edit"},
+    {"title":"Frameboxx Student Enquiries","biz":"frameboxx","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/1XRsAcCfS3ECkMXNC2KOw-s_YGFgi1JAgLJI75GTRiec/edit"},
+    {"title":"RAAS Internship Applications","biz":"raas","type":"Sheet","url":"https://docs.google.com/spreadsheets/d/1sWRU9w2oIrg-MWhbeJUpueyHNo3bySViSSobhXy2wBQ/edit"},
+    {"title":"Empire Mode OS (Crumble+Flake strategy)","biz":"crumble","type":"Doc","url":"https://docs.google.com/document/d/10NV9U7UpQzqM9d6pIcM7QOEON7DP0JK8qeZmIspPSGw/edit"}
+  ]
+}
+</script>
+
+<script>
+'use strict';
+/* ============ core ============ */
+const AI = JSON.parse(document.getElementById('ai-data').textContent);
+const KEY = 'bizos.v1';
+const BIZ = {}; AI.businesses.forEach(b => BIZ[b.id] = b);
+const LEAD_STATUSES = ['Not contacted','Contacted','In conversation','Meeting set','Proposal sent','Won','Lost','On hold','Research'];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const todayISO = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const fmtMoney = n => '₹' + Number(n||0).toLocaleString('en-IN', {maximumFractionDigits: 2});
+const fmtDate = d => { if (!d) return '—'; const dt = new Date(d + 'T00:00:00'); if (isNaN(dt)) return d; return dt.toLocaleDateString('en-IN', {day:'numeric', month:'short'}); };
+const plural = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
+
+function defaults(){ return { theme:null, tasks:[], seenSeeds:{}, leadOverrides:{}, userLeads:[], expenseOverrides:{}, userExpenses:[], notifRead:{}, copilot:[], posted:{} }; }
+function load(){
+  try { const raw = localStorage.getItem(KEY); if (!raw) return defaults();
+    const parsed = JSON.parse(raw); return Object.assign(defaults(), parsed);
+  } catch(e){ return defaults(); }
+}
+let st = load();
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e){ toast('Storage full — export a backup from Settings'); } }
+
+/* adopt new AI seed tasks once (user then owns them forever) */
+(AI.seedTasks || []).forEach(sd => {
+  if (!st.seenSeeds[sd.id]) {
+    st.seenSeeds[sd.id] = 1;
+    st.tasks.push({ id: uid(), seed: sd.id, title: sd.title, business: sd.business||'', priority: sd.priority||'P2',
+      due: sd.due||'', status:'todo', category: sd.category||'', notes: sd.notes||'', est:'', repeat:'none',
+      links:[], value:'', created: Date.now(), order: st.tasks.length });
+  }
+});
+save();
+
+/* ============ derived data ============ */
+function leads(){ return AI.leads.map(l => Object.assign({}, l, st.leadOverrides[l.id] || {})).concat(st.userLeads).filter(l => !l.archived); }
+function expenses(){ return AI.expenses.map(e => Object.assign({}, e, st.expenseOverrides[e.id] || {})).concat(st.userExpenses).filter(e => !e.archived); }
+function activeTasks(){ return st.tasks.filter(t => t.status !== 'archived'); }
+function openTasks(){ return st.tasks.filter(t => t.status === 'todo' || t.status === 'doing'); }
+function overdue(){ const t = todayISO(); return openTasks().filter(x => x.due && x.due < t); }
+function dueToday(){ const t = todayISO(); return openTasks().filter(x => x.due === t); }
+function followupsDue(){ const t = todayISO(); return leads().filter(l => l.next && l.next <= t && !/won|lost|research/i.test(l.status || '')); }
+function urgentExpenses(){ return expenses().filter(e => e.flag === 'urgent'); }
+function bizLeads(id){ return leads().filter(l => l.business === id); }
+function planFor(id){ return (AI.posting.plans || []).find(p => p.business === id); }
+
+function computeNotifs(){
+  const out = [];
+  urgentExpenses().forEach(e => out.push({ id:'exp-'+e.id, icon:'💰', title: e.vendor + ' — ' + fmtMoney(e.amount) + ' needs payment', body: e.note || '', route:'#/finance' }));
+  overdue().forEach(t => out.push({ id:'od-'+t.id+'-'+t.due, icon:'⏰', title:'Overdue: ' + t.title, body:'Was due ' + fmtDate(t.due), route:'#/tasks' }));
+  followupsDue().forEach(l => out.push({ id:'fu-'+l.id+'-'+(l.next||''), icon:'📞', title:'Follow up: ' + l.name, body:(BIZ[l.business] ? BIZ[l.business].short : '') + ' · due ' + fmtDate(l.next), route:'#/biz/'+l.business+'?tab=leads' }));
+  const td = todayISO();
+  (AI.posting.plans||[]).forEach(p => { if (AI.posting.date === td && !st.posted[td+'-'+p.business]) out.push({ id:'post-'+td+'-'+p.business, icon:'📢', title:'Not posted yet: ' + (BIZ[p.business]?BIZ[p.business].short:p.business), body:p.pillar, route:'#/marketing' }); });
+  (AI.newLeadIds||[]).forEach(id => { const l = AI.leads.find(x => x.id === id); if (l) out.push({ id:'new-'+id, icon:'🆕', title:'New lead: ' + l.name, body: BIZ[l.business] ? BIZ[l.business].short : '', route:'#/biz/'+l.business+'?tab=leads' }); });
+  out.push({ id:'gen-'+AI.generatedAt, icon:'✨', title:'Daily AI update completed', body:'Data refreshed ' + AI.generatedAt + ' · next run 6:00 AM IST', route:'#/home' });
+  return out;
+}
+function unreadCount(){ return computeNotifs().filter(n => !st.notifRead[n.id]).length; }
+
+/* ============ shell & routing ============ */
+const root = document.getElementById('root');
+const layer = document.getElementById('layer');
+function route(){
+  const h = location.hash.replace(/^#\/?/, '');
+  const [path, qs] = h.split('?');
+  const parts = path.split('/');
+  return { view: parts[0] || 'home', arg: parts[1] || '', q: new URLSearchParams(qs || '') };
+}
+const NAV = [
+  { id:'home', icon:'🏠', label:'Home' },
+  { id:'analytics', icon:'📈', label:'Executive Dashboard' },
+  { id:'calendar', icon:'📅', label:'Calendar' },
+  { id:'tasks', icon:'✅', label:'Tasks' },
+  { id:'marketing', icon:'📢', label:'Marketing Planner' },
+  { id:'crm', icon:'👥', label:'CRM & Vendors' },
+  { id:'finance', icon:'💰', label:'Finance' },
+  { id:'documents', icon:'📄', label:'Documents' },
+  { id:'copilot', icon:'🤖', label:'AI Copilot' },
+  { id:'settings', icon:'⚙️', label:'Settings' }
+];
+function applyTheme(){ document.documentElement.dataset.theme = st.theme || ''; }
+function render(){
+  applyTheme();
+  const r = route();
+  const view = VIEWS[r.view] ? r.view : 'home';
+  root.innerHTML = `
+  <div class="app">
+    <div class="topbar">
+      <button class="icon-btn hamburger" data-act="menu" aria-label="Menu">☰</button>
+      <span class="logo"><span class="dot"></span>BizOS</span>
+      <div class="searchbox" data-act="palette" role="button" tabindex="0">🔎 Search tasks, leads, docs…<kbd>Ctrl K</kbd></div>
+      <div class="top-actions">
+        <button class="icon-btn" data-act="bell" aria-label="Notifications">🔔${unreadCount() ? `<span class="badge">${unreadCount()}</span>` : ''}</button>
+        <button class="icon-btn" data-act="theme" aria-label="Toggle theme">${(st.theme === 'dark' || (!st.theme && matchMedia('(prefers-color-scheme: dark)').matches)) ? '☀️' : '🌙'}</button>
+      </div>
+    </div>
+    <nav class="sidebar" id="sidebar">
+      ${NAV.map(n => `<a class="nav-item ${view === n.id ? 'active' : ''}" href="#/${n.id}"><span class="ico">${n.icon}</span>${n.label}${n.id === 'tasks' ? `<span class="nav-count">${openTasks().length}</span>` : ''}</a>`).join('')}
+      <div class="nav-label">Businesses</div>
+      ${AI.businesses.map(b => `<a class="nav-item ${view === 'biz' && r.arg === b.id ? 'active' : ''}" href="#/biz/${b.id}"><span class="biz-dot" style="background:var(--${b.cvar})"></span>${b.short}<span class="nav-count">${bizLeads(b.id).filter(l=>l.kind!=='research'&&!/won|lost/i.test(l.status)).length}</span></a>`).join('')}
+    </nav>
+    <main class="main"><div class="page">${VIEWS[view](r)}</div></main>
+  </div>`;
+}
+
+/* ============ shared partials ============ */
+function statTile(n, c, cls){ return `<div class="stat ${cls||''}"><div class="n">${n}</div><div class="c">${esc(c)}</div></div>`; }
+function bizChip(id){ const b = BIZ[id]; return b ? `<span class="pill neutral"><span class="biz-dot" style="background:var(--${b.cvar})"></span>${esc(b.short)}</span>` : ''; }
+function prioPill(p){ const m = {P1:['p1','P1 · Urgent'],P2:['p2','P2'],P3:['p3','P3']}; const [cls,txt] = m[p]||m.P2; return `<span class="pill ${cls}">${txt}</span>`; }
+function duePill(d){ if(!d) return ''; const t = todayISO(); const cls = d < t ? 'overdue' : (d === t ? 'today' : ''); return `<span class="t-due ${cls}">📅 ${d < t ? 'Overdue · ' : (d === t ? 'Today' : fmtDate(d))}${d < t ? fmtDate(d) : ''}</span>`; }
+
+function planCard(p, withExtras){
+  const b = BIZ[p.business]; if (!b) return '';
+  const td = AI.posting.date; const done = !!st.posted[td+'-'+p.business];
+  return `<div class="brand-card" style="--bc:var(--${b.cvar});--bb:var(--${b.cvar}-bg)">
+    <div class="brand-head"><span class="brand-name">${esc(b.short)}</span><span class="brand-day">${esc(AI.posting.day)} · ${done ? '✅ posted' : 'pending'}</span></div>
+    <div class="brand-pillar">${esc(p.pillar)}</div>
+    <p>${esc(p.idea)}</p>
+    <p class="cap">${esc(p.distribution)}</p>
+    ${withExtras ? `<div class="mk-extra">
+      <span class="mk-chip">🪝 ${esc(p.hook)}</span>
+      <span class="mk-chip">⏰ ${esc(p.bestTime)}</span>
+      <span class="mk-chip">👉 ${esc(p.cta)}</span>
+      <span class="mk-chip">${esc(p.hashtags)}</span>
+    </div>` : ''}
+    <div style="margin-top:10px"><label style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;cursor:pointer"><input type="checkbox" data-ch="posted" data-biz="${p.business}" ${done?'checked':''} style="accent-color:var(--${b.cvar})"> Mark as posted</label></div>
+  </div>`;
+}
+
+/* ============ views ============ */
+const VIEWS = {};
+
+VIEWS.home = () => {
+  const hr = new Date().getHours();
+  const greet = hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening';
+  const fu = followupsDue(); const od = overdue(); const dt = dueToday(); const ue = urgentExpenses();
+  return `
+  <div class="page-head"><div>
+    <h1 class="pt">${greet}, Rishu</h1>
+    <div class="pt-sub">${new Date().toLocaleDateString('en-IN',{weekday:'long', day:'numeric', month:'long', year:'numeric'})} · AI data refreshed ${esc(AI.generatedAt)}</div>
+  </div><button class="btn primary" data-act="newTask">＋ New task</button></div>
+
+  ${ue.length ? ue.map(e => `<div class="card" style="border-color:var(--urgent);background:var(--urgent-bg)">
+    <div class="eyebrow" style="color:var(--urgent)">Needs action</div>
+    <div style="font-weight:700;margin-top:4px">${esc(e.vendor)} — ${fmtMoney(e.amount)}</div>
+    <div style="font-size:13px;margin-top:2px">${esc(e.note)}</div>
+    <div style="margin-top:10px;display:flex;gap:8px"><button class="btn sm" data-act="expPaid" data-id="${e.id}">Mark as paid</button><a class="btn sm ghost" href="#/finance">Open Finance</a></div>
+  </div>`).join('') : ''}
+
+  <div class="grid4">
+    ${statTile(od.length, 'Overdue tasks', od.length ? 'urgent' : '')}
+    ${statTile(dt.length, 'Due today')}
+    ${statTile(fu.length, 'Follow-ups due')}
+    ${statTile(leads().filter(l => l.status === 'Not contacted').length, 'Uncontacted leads')}
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="eyebrow">Today</div><h2 class="st" style="margin:4px 0 10px">What to do</h2>
+      ${(od.concat(dt).slice(0, 6).map(t => taskRow(t)).join('')) || '<div class="empty">Nothing due today. Pull something forward from Tasks.</div>'}
+      <a class="btn sm ghost" href="#/tasks" style="margin-top:6px">All tasks →</a>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Calls</div><h2 class="st" style="margin:4px 0 10px">Who to contact</h2>
+      ${fu.slice(0, 5).map(l => `<div class="agenda-item">${bizChip(l.business)}<div style="flex:1;min-width:0"><span class="lead-name" data-act="leadModal" data-id="${esc(l.id)}">${esc(l.name)}</span><div style="font-size:11.5px;color:var(--ink-dim)">${esc(l.phone || l.link || '')} · due ${fmtDate(l.next)}</div></div><button class="btn sm" data-act="logContact" data-id="${esc(l.id)}">Log call</button></div>`).join('') || '<div class="empty">No follow-ups due. Check CRM for the pipeline.</div>'}
+      <a class="btn sm ghost" href="#/crm" style="margin-top:6px">Open CRM →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">Marketing</div><h2 class="st" style="margin:4px 0 12px">What to post today</h2>
+    <div class="grid2">${(AI.posting.plans||[]).map(p => planCard(p, false)).join('')}</div>
+    <a class="btn sm ghost" href="#/marketing" style="margin-top:10px">Full planner (hooks, captions, hashtags) →</a>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">AI insights</div><h2 class="st" style="margin:4px 0 10px">Opportunities & risks</h2>
+    ${(AI.insights||[]).map(i => `<div class="agenda-item">💡<div>${esc(i)}</div></div>`).join('')}
+  </div>`;
+};
+
+function taskRow(t){
+  const b = BIZ[t.business];
+  return `<div class="task-row ${t.status === 'done' ? 'done' : ''}" draggable="true" data-task="${t.id}">
+    <input type="checkbox" class="t-check" data-ch="toggle" data-id="${t.id}" ${t.status === 'done' ? 'checked' : ''} aria-label="Complete">
+    <div class="t-body" data-act="taskModal" data-id="${t.id}">
+      <div class="t-title">${esc(t.title)}</div>
+      <div class="t-meta">${prioPill(t.priority)}${b ? bizChip(t.business) : ''}${t.category ? `<span class="pill neutral">${esc(t.category)}</span>` : ''}${duePill(t.due)}${t.repeat && t.repeat !== 'none' ? '<span class="pill neutral">🔁 ' + esc(t.repeat) + '</span>' : ''}${t.notes ? '📝' : ''}</div>
+    </div>
+  </div>`;
+}
+
+VIEWS.tasks = (r) => {
+  return `
+  <div class="page-head"><div><h1 class="pt">Tasks</h1><div class="pt-sub">${plural(openTasks().length, 'open task')} · ${overdue().length} overdue · everything saves instantly on this device</div></div>
+  <button class="btn primary" data-act="newTask">＋ New task</button></div>
+  <div class="toolbar card flat" style="padding:10px">
+    <select data-ch="tf" data-k="biz"><option value="all">All businesses</option><option value="" ${TF.biz===''?'selected':''}>General</option>${AI.businesses.map(b => `<option value="${b.id}" ${TF.biz===b.id?'selected':''}>${esc(b.short)}</option>`).join('')}</select>
+    <select data-ch="tf" data-k="status">${[['open','Open'],['all','All'],['done','Completed'],['archived','Archived']].map(([v,l])=>`<option value="${v}" ${TF.status===v?'selected':''}>${l}</option>`).join('')}</select>
+    <select data-ch="tf" data-k="group">${[['status','Group: status'],['business','Group: business'],['priority','Group: priority'],['none','No grouping']].map(([v,l])=>`<option value="${v}" ${TF.group===v?'selected':''}>${l}</option>`).join('')}</select>
+    <select data-ch="tf" data-k="sort">${[['order','Sort: manual (drag)'],['due','Sort: due date'],['priority','Sort: priority'],['created','Sort: newest']].map(([v,l])=>`<option value="${v}" ${TF.sort===v?'selected':''}>${l}</option>`).join('')}</select>
+    <input type="search" placeholder="Filter tasks…" data-ch="tf" data-k="q" value="${esc(TF.q)}">
+  </div>
+  <div id="task-list">${taskListHTML()}</div>`;
+};
+const TF = { biz:'all', status:'open', group:'status', sort:'order', q:'' };
+function filteredTasks(){
+  let ts = st.tasks.slice();
+  if (TF.status === 'open') ts = ts.filter(t => t.status === 'todo' || t.status === 'doing');
+  else if (TF.status === 'done') ts = ts.filter(t => t.status === 'done');
+  else if (TF.status === 'archived') ts = ts.filter(t => t.status === 'archived');
+  else ts = ts.filter(t => t.status !== 'archived');
+  if (TF.biz !== 'all') ts = ts.filter(t => (t.business || '') === TF.biz);
+  if (TF.q) { const q = TF.q.toLowerCase(); ts = ts.filter(t => (t.title + ' ' + t.notes + ' ' + t.category).toLowerCase().includes(q)); }
+  const pv = {P1:0, P2:1, P3:2};
+  if (TF.sort === 'due') ts.sort((a,b) => (a.due || '9999') < (b.due || '9999') ? -1 : 1);
+  else if (TF.sort === 'priority') ts.sort((a,b) => (pv[a.priority] ?? 1) - (pv[b.priority] ?? 1));
+  else if (TF.sort === 'created') ts.sort((a,b) => b.created - a.created);
+  else ts.sort((a,b) => (a.order ?? 0) - (b.order ?? 0));
+  return ts;
+}
+function taskListHTML(){
+  const ts = filteredTasks();
+  if (!ts.length) return '<div class="empty">No tasks match. Create one with <span class="kbd">＋ New task</span>.</div>';
+  if (TF.group === 'none') return ts.map(taskRow).join('');
+  const groups = {};
+  const keyFn = TF.group === 'business' ? (t => t.business ? (BIZ[t.business] ? BIZ[t.business].short : t.business) : 'General')
+    : TF.group === 'priority' ? (t => t.priority)
+    : (t => ({todo:'To do', doing:'In progress', done:'Completed', archived:'Archived'}[t.status] || t.status));
+  ts.forEach(t => { const k = keyFn(t); (groups[k] = groups[k] || []).push(t); });
+  return Object.entries(groups).map(([k, arr]) => `<div class="task-group"><div class="task-group-h">${esc(k)} · ${arr.length}</div>${arr.map(taskRow).join('')}</div>`).join('');
+}
+
+VIEWS.calendar = () => {
+  const items = [];
+  activeTasks().filter(t => t.due && t.status !== 'done').forEach(t => items.push({ date: t.due, icon:'✅', label: t.title, sub: t.business ? (BIZ[t.business]||{}).short : '', act:'taskModal', id: t.id }));
+  leads().forEach(l => { if (l.next && !/won|lost/i.test(l.status||'')) items.push({ date: l.next, icon:'📞', label: 'Follow up: ' + l.name, sub: (BIZ[l.business]||{}).short, act:'leadModal', id: l.id }); });
+  items.sort((a,b) => a.date < b.date ? -1 : 1);
+  const t = todayISO();
+  const past = items.filter(i => i.date < t);
+  const days = {};
+  items.filter(i => i.date >= t).forEach(i => (days[i.date] = days[i.date] || []).push(i));
+  return `
+  <div class="page-head"><div><h1 class="pt">Calendar</h1><div class="pt-sub">Agenda of task deadlines and lead follow-ups</div></div></div>
+  ${past.length ? `<div class="card" style="border-color:var(--urgent)"><div class="eyebrow" style="color:var(--urgent)">Slipped</div>${past.map(i => `<div class="agenda-item">${i.icon}<div style="flex:1"><span class="lead-name" data-act="${i.act}" data-id="${esc(i.id)}">${esc(i.label)}</span> <span style="color:var(--ink-dim);font-size:12px">${esc(i.sub || '')} · was ${fmtDate(i.date)}</span></div></div>`).join('')}</div>` : ''}
+  ${Object.keys(days).length ? Object.entries(days).map(([d, arr]) => `<div class="agenda-day"><div class="agenda-date">${new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'long', day:'numeric', month:'long'})}${d === t ? ' · today' : ''}</div>${arr.map(i => `<div class="agenda-item">${i.icon}<div style="flex:1"><span class="lead-name" data-act="${i.act}" data-id="${esc(i.id)}">${esc(i.label)}</span> <span style="color:var(--ink-dim);font-size:12px">${esc(i.sub || '')}</span></div></div>`).join('')}</div>`).join('') : '<div class="empty">Nothing scheduled ahead.</div>'}`;
+};
+
+VIEWS.marketing = () => `
+  <div class="page-head"><div><h1 class="pt">Marketing Planner</h1><div class="pt-sub">${esc(AI.posting.day)}, ${fmtDate(AI.posting.date)} — a fresh plan lands every morning at 6 AM</div></div></div>
+  ${(AI.posting.plans||[]).map(p => planCard(p, true)).join('')}
+  <div class="card"><div class="eyebrow">Trends</div><h2 class="st" style="margin:4px 0 10px">Today's strategies to go viral</h2>
+  ${(AI.trends||[]).map(tr => `<div style="margin-bottom:10px"><span class="pill neutral">${esc(tr.tag)}</span> <strong style="font-size:13.5px">${esc(tr.title)}</strong><div style="font-size:13px;color:var(--ink-dim);margin-top:2px">${esc(tr.body)}</div></div>`).join('')}</div>`;
+
+function leadTable(ls, showBiz){
+  if (!ls.length) return '<div class="empty">No leads here yet. Add one, or the 6 AM research routine will.</div>';
+  return `<div class="tbl-wrap"><table class="tbl"><thead><tr>${showBiz ? '<th>Business</th>' : ''}<th>Lead</th><th>Priority</th><th>Status</th><th>Next follow-up</th><th></th></tr></thead><tbody>
+  ${ls.map(l => `<tr>
+    ${showBiz ? `<td>${bizChip(l.business)}</td>` : ''}
+    <td><span class="lead-name" data-act="leadModal" data-id="${esc(l.id)}">${esc(l.name)}</span><div style="font-size:11.5px;color:var(--ink-dim)">${esc(l.cat || '')}${l.area ? ' · ' + esc(l.area) : ''}${l.phone ? ' · ' + esc(l.phone) : ''}</div></td>
+    <td>${l.priority === 'HIGH' ? '<span class="pill p1">HIGH</span>' : l.priority === 'RESEARCH' ? '<span class="pill neutral">RESEARCH</span>' : '<span class="pill p2">MED</span>'}</td>
+    <td><select data-ch="leadStatus" data-id="${esc(l.id)}">${LEAD_STATUSES.map(s => `<option ${s === l.status ? 'selected' : ''}>${s}</option>`).join('')}</select></td>
+    <td><input type="date" value="${esc(l.next || '')}" data-ch="leadNext" data-id="${esc(l.id)}"></td>
+    <td><button class="btn sm" data-act="logContact" data-id="${esc(l.id)}">Log contact</button></td>
+  </tr>`).join('')}</tbody></table></div>`;
+}
+
+const CF = { biz:'all', status:'all', q:'' };
+VIEWS.crm = () => {
+  let ls = leads();
+  if (CF.biz !== 'all') ls = ls.filter(l => l.business === CF.biz);
+  if (CF.status !== 'all') ls = ls.filter(l => l.status === CF.status);
+  if (CF.q) { const q = CF.q.toLowerCase(); ls = ls.filter(l => (l.name + ' ' + (l.cat||'') + ' ' + (l.area||'') + ' ' + (l.notes||'')).toLowerCase().includes(q)); }
+  ls.sort((a,b) => (a.next || '9999') < (b.next || '9999') ? -1 : 1);
+  const stale = leads().filter(l => l.status === 'Contacted' && l.last && l.last < new Date(Date.now() - 7 * 864e5).toISOString().slice(0,10));
+  return `
+  <div class="page-head"><div><h1 class="pt">CRM & Vendors</h1><div class="pt-sub">Unified pipeline across all four businesses · ${plural(leads().filter(l=>l.kind!=='research').length, 'lead')}</div></div>
+  <button class="btn primary" data-act="newLead">＋ New lead</button></div>
+  <div class="grid4">
+    ${statTile(leads().filter(l => l.status === 'Not contacted').length, 'Not contacted')}
+    ${statTile(leads().filter(l => /conversation|meeting|proposal/i.test(l.status)).length, 'In play')}
+    ${statTile(followupsDue().length, 'Follow-ups due')}
+    ${statTile(leads().filter(l => l.status === 'Won').length, 'Won')}
+  </div>
+  ${stale.length ? `<div class="note-box">⚠️ ${plural(stale.length, 'lead')} contacted over a week ago with no next step: ${stale.slice(0,3).map(l => esc(l.name)).join(', ')}${stale.length > 3 ? '…' : ''}</div>` : ''}
+  <div class="toolbar card flat" style="padding:10px">
+    <select data-ch="cf" data-k="biz"><option value="all">All businesses</option>${AI.businesses.map(b => `<option ${CF.biz === b.id ? 'selected' : ''} value="${b.id}">${esc(b.short)}</option>`).join('')}</select>
+    <select data-ch="cf" data-k="status"><option value="all">All statuses</option>${LEAD_STATUSES.map(s => `<option ${CF.status === s ? 'selected' : ''}>${s}</option>`).join('')}</select>
+    <input type="search" placeholder="Search leads…" data-ch="cf" data-k="q" value="${esc(CF.q)}">
+  </div>
+  ${leadTable(ls, true)}`;
+};
+
+VIEWS.finance = () => {
+  const ex = expenses().slice().sort((a,b) => a.date < b.date ? 1 : -1);
+  const month = todayISO().slice(0,7);
+  const mtd = ex.filter(e => e.date && e.date.startsWith(month) && !e.flag).reduce((s,e) => s + Number(e.amount||0), 0);
+  const owed = ex.filter(e => e.flag === 'urgent').reduce((s,e) => s + Number(e.amount||0), 0);
+  const check = ex.filter(e => e.flag === 'warn').reduce((s,e) => s + Number(e.amount||0), 0);
+  const cats = {};
+  ex.filter(e => !e.flag).forEach(e => cats[e.category || 'Other'] = (cats[e.category || 'Other'] || 0) + Number(e.amount||0));
+  const maxCat = Math.max(1, ...Object.values(cats));
+  return `
+  <div class="page-head"><div><h1 class="pt">Finance</h1><div class="pt-sub">Auto-tracked from Gmail alerts + your manual entries. Not a bank feed.</div></div>
+  <button class="btn primary" data-act="newExpense">＋ Add entry</button></div>
+  <div class="grid3">
+    ${statTile(fmtMoney(owed), 'Overdue / needs payment', owed ? 'urgent' : '')}
+    ${statTile(fmtMoney(check), 'To verify')}
+    ${statTile(fmtMoney(mtd), 'Tracked spend this month')}
+  </div>
+  <div class="card"><div class="eyebrow">By category</div>
+    ${Object.entries(cats).sort((a,b) => b[1] - a[1]).map(([c, v]) => `<div class="bar-row"><div class="bar-label">${esc(c)}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(v / maxCat * 100)}%"></div></div><div class="bar-val">${fmtMoney(v)}</div></div>`).join('') || '<div class="empty">No categorised spends yet.</div>'}
+  </div>
+  <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Date</th><th>Vendor</th><th>Category</th><th>Status</th><th style="text-align:right">Amount</th><th></th></tr></thead><tbody>
+    ${ex.map(e => `<tr><td>${fmtDate(e.date)}</td><td><strong>${esc(e.vendor)}</strong>${e.note ? `<div style="font-size:11.5px;color:var(--ink-dim)">${esc(e.note)}</div>` : ''}</td><td>${esc(e.category || '')}</td>
+      <td>${e.flag === 'urgent' ? '<span class="pill urgent">overdue</span>' : e.flag === 'warn' ? '<span class="pill warn">verify</span>' : e.flag === 'paid' ? '<span class="pill ok">paid</span>' : '<span class="pill ok">logged</span>'}</td>
+      <td style="text-align:right"><span class="amt">${fmtMoney(e.amount)}</span></td>
+      <td>${e.flag === 'urgent' || e.flag === 'warn' ? `<button class="btn sm" data-act="expPaid" data-id="${esc(e.id)}">Mark paid</button>` : ''}</td></tr>`).join('')}
+  </tbody></table></div>
+  <div class="note-box">The 6 AM routine appends new Gmail-detected transactions daily. Marking something paid here is permanent — the routine never un-marks it.</div>`;
+};
+
+VIEWS.analytics = () => {
+  const week = [...Array(7)].map((_, i) => { const d = new Date(Date.now() - (6 - i) * 864e5); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); });
+  const doneBy = {};
+  st.tasks.filter(t => t.status === 'done' && t.completedAt).forEach(t => { const d = new Date(t.completedAt).toISOString().slice(0,10); doneBy[d] = (doneBy[d] || 0) + 1; });
+  const maxDone = Math.max(1, ...week.map(d => doneBy[d] || 0));
+  return `
+  <div class="page-head"><div><h1 class="pt">Executive Dashboard</h1><div class="pt-sub">Cross-business health at a glance</div></div></div>
+  <div class="grid4">
+    ${statTile(openTasks().length, 'Open tasks')}
+    ${statTile(leads().filter(l => l.kind !== 'research').length, 'Leads in CRM')}
+    ${statTile(leads().filter(l => /conversation|meeting|proposal/i.test(l.status)).length, 'Active conversations')}
+    ${statTile(st.tasks.filter(t => t.status === 'done').length, 'Tasks completed (all time)')}
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="eyebrow">Momentum</div><h2 class="st" style="margin:4px 0 10px">Tasks completed, last 7 days</h2>
+      ${week.map(d => `<div class="bar-row"><div class="bar-label">${new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'short', day:'numeric'})}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round((doneBy[d] || 0) / maxDone * 100)}%"></div></div><div class="bar-val">${doneBy[d] || 0}</div></div>`).join('')}
+    </div>
+    <div class="card"><div class="eyebrow">Pipeline</div><h2 class="st" style="margin:4px 0 10px">Uncontacted leads per business</h2>
+      ${AI.businesses.map(b => { const n = bizLeads(b.id).filter(l => l.status === 'Not contacted').length; const tot = Math.max(1, leads().filter(l => l.status === 'Not contacted').length); return `<div class="bar-row"><div class="bar-label">${esc(b.short)}</div><div class="bar-track"><div class="bar-fill" style="--bc:var(--${b.cvar});width:${Math.round(n / tot * 100)}%"></div></div><div class="bar-val">${n}</div></div>`; }).join('')}
+    </div>
+  </div>
+  <div class="card"><div class="eyebrow">Pipeline stages</div><h2 class="st" style="margin:4px 0 10px">Where every lead sits</h2>
+    ${LEAD_STATUSES.filter(s => s !== 'Research').map(s => { const n = leads().filter(l => l.status === s).length; if (!n) return ''; const tot = Math.max(1, leads().filter(l => l.kind !== 'research').length); return `<div class="bar-row"><div class="bar-label">${s}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(n / tot * 100)}%"></div></div><div class="bar-val">${n}</div></div>`; }).join('')}
+  </div>`;
+};
+
+VIEWS.documents = () => `
+  <div class="page-head"><div><h1 class="pt">Documents</h1><div class="pt-sub">Your live Google Drive working files, by business</div></div></div>
+  <div class="grid3">${AI.docs.map(d => `<a class="doc-card" href="${esc(d.url)}" target="_blank" rel="noopener"><div class="dt">${d.type === 'Sheet' ? '📊' : d.type === 'Slides' ? '📽️' : '📄'} ${esc(d.title)}</div><div class="dd">${d.biz && BIZ[d.biz] ? esc(BIZ[d.biz].short) + ' · ' : ''}${esc(d.type)} · opens in Drive</div></a>`).join('')}</div>`;
+
+VIEWS.copilot = () => `
+  <div class="page-head"><div><h1 class="pt">AI Copilot</h1><div class="pt-sub">Answers from your live data — on this device, instantly. Deeper questions: ask me in the Claude session.</div></div></div>
+  <div class="card">
+    <div class="chat" id="chat">${st.copilot.map(m => `<div class="msg ${m.role}">${esc(m.text)}</div>`).join('') || '<div class="msg ai">Morning. Ask me one of these — or type your own.</div>'}</div>
+    <div class="chips" style="margin-top:12px">
+      ${['What should I do today?','What content should I post?','Which clients should I call?','Which bills are overdue?','What businesses have not been contacted recently?','What is my revenue forecast?'].map(q => `<button class="chip" data-act="ask" data-q="${esc(q)}">${esc(q)}</button>`).join('')}
+    </div>
+    <form class="chat-input" data-form="copilot"><input name="q" placeholder="Ask about tasks, leads, bills, posting…" autocomplete="off"><button class="btn primary" type="submit">Ask</button></form>
+  </div>`;
+
+VIEWS.settings = () => `
+  <div class="page-head"><div><h1 class="pt">Settings</h1></div></div>
+  <div class="card"><div class="eyebrow">Appearance</div><h2 class="st" style="margin:4px 0 10px">Theme</h2>
+    <div style="display:flex;gap:8px">${[['','System'],['light','Light'],['dark','Dark']].map(([v, l]) => `<button class="btn ${((st.theme || '') === v) ? 'primary' : ''}" data-act="setTheme" data-v="${v}">${l}</button>`).join('')}</div>
+  </div>
+  <div class="card"><div class="eyebrow">Your data</div><h2 class="st" style="margin:4px 0 10px">Backup & restore</h2>
+    <p style="font-size:13px;color:var(--ink-dim);margin:0 0 10px">Everything you create or edit lives in this browser's storage on this device (${(JSON.stringify(st).length / 1024).toFixed(1)} KB). It survives refreshes and the daily 6 AM redeploys — but it does not sync between devices, so export a backup occasionally.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" data-act="export">⬇ Export backup (JSON)</button>
+      <label class="btn" style="cursor:pointer">⬆ Import backup<input type="file" accept=".json" data-ch="import" style="display:none"></label>
+      <button class="btn danger" data-act="reset">Reset local data</button>
+    </div>
+  </div>
+  <div class="card"><div class="eyebrow">How updates work</div><h2 class="st" style="margin:4px 0 10px">AI data vs your data</h2>
+    <p style="font-size:13px;margin:0 0 6px"><strong>AI-generated</strong> (refreshed daily at 6 AM IST): marketing plans, trends, suggested leads, Gmail-detected expenses, insights. New records are appended with new IDs — existing ones are never removed.</p>
+    <p style="font-size:13px;margin:0"><strong>Yours</strong> (never touched by automation): tasks, notes, lead statuses, follow-up dates, paid-flags, preferences. Your edits override AI fields permanently, even when the AI data refreshes.</p>
+  </div>
+  <div class="card"><div class="eyebrow">Phone</div><h2 class="st" style="margin:4px 0 10px">Add to Home Screen</h2>
+    <ol style="padding-left:20px;margin:0;font-size:13px"><li>Open this page in Safari (iPhone) or Chrome (Android)</li><li>Share icon → <strong>Add to Home Screen</strong></li><li>Opens full-screen like an app; the link never changes</li></ol>
+  </div>`;
+
+VIEWS.biz = (r) => {
+  const b = BIZ[r.arg]; if (!b) return '<div class="empty">Unknown business.</div>';
+  const tab = r.q.get('tab') || 'overview';
+  const ls = bizLeads(b.id);
+  const real = ls.filter(l => l.kind !== 'research');
+  const research = ls.filter(l => l.kind === 'research');
+  const tasks = activeTasks().filter(t => t.business === b.id);
+  const fu = ls.filter(l => l.next && l.next <= todayISO() && !/won|lost|research/i.test(l.status || ''));
+  const plan = planFor(b.id);
+  const tabs = [['overview','Overview'],['leads','Leads & Vendors'],['marketing','Marketing'],['tasks','Tasks'],['products','Products'],['docs','Documents']];
+  let body = '';
+  if (tab === 'overview') body = `
+    <div class="grid4">
+      ${statTile(real.filter(l => l.status === 'Not contacted').length, 'Uncontacted leads')}
+      ${statTile(fu.length, 'Follow-ups due', fu.length ? 'urgent' : '')}
+      ${statTile(tasks.filter(t => t.status !== 'done').length, 'Open tasks')}
+      ${statTile(real.filter(l => /conversation|meeting|proposal/i.test(l.status)).length, 'In conversation')}
+    </div>
+    <div class="grid2">
+      <div class="card"><div class="eyebrow">Next actions</div>
+        ${fu.slice(0,4).map(l => `<div class="agenda-item">📞<div style="flex:1"><span class="lead-name" data-act="leadModal" data-id="${esc(l.id)}">${esc(l.name)}</span><div style="font-size:11.5px;color:var(--ink-dim)">${esc(l.phone || l.link || '')}</div></div><button class="btn sm" data-act="logContact" data-id="${esc(l.id)}">Log</button></div>`).join('') || '<div class="empty">No follow-ups due.</div>'}
+        ${tasks.filter(t => t.status !== 'done').slice(0,3).map(taskRow).join('')}
+      </div>
+      <div class="card"><div class="eyebrow">Today's post</div>${plan ? planCard(plan, false) : '<div class="empty">No plan generated for today.</div>'}</div>
+    </div>
+    ${research.length ? `<div class="card"><div class="eyebrow">Research queues (fed by the 6 AM routine)</div>${research.map(l => `<div class="agenda-item">🔍<div><strong style="font-size:13px">${esc(l.name)}</strong><div style="font-size:12px;color:var(--ink-dim)">${esc(l.pitch)}</div></div></div>`).join('')}</div>` : ''}`;
+  else if (tab === 'leads') body = `<div class="toolbar" style="justify-content:flex-end"><button class="btn primary" data-act="newLead" data-biz="${b.id}">＋ New lead</button></div>` + leadTable(real, false) + (research.length ? `<div class="card" style="margin-top:12px"><div class="eyebrow">Research queues</div>${research.map(l => `<div class="agenda-item">🔍<div><strong style="font-size:13px">${esc(l.name)}</strong><div style="font-size:12px;color:var(--ink-dim)">${esc(l.pitch)}</div></div></div>`).join('')}</div>` : '');
+  else if (tab === 'marketing') body = (plan ? planCard(plan, true) : '<div class="empty">No plan for today.</div>');
+  else if (tab === 'tasks') body = `<div class="toolbar" style="justify-content:flex-end"><button class="btn primary" data-act="newTask" data-biz="${b.id}">＋ New task</button></div>` + (tasks.filter(t => t.status !== 'done').map(taskRow).join('') || '<div class="empty">No open tasks for this business.</div>');
+  else if (tab === 'products') body = `<div class="grid2">${(AI.products[b.id] || []).map(p => `<div class="card flat"><strong style="font-size:13.5px">${esc(p.name)}</strong><div style="font-size:12.5px;color:var(--ink-dim);margin-top:3px">${esc(p.detail)}</div></div>`).join('')}</div>`;
+  else if (tab === 'docs') body = `<div class="grid3">${AI.docs.filter(d => d.biz === b.id).map(d => `<a class="doc-card" href="${esc(d.url)}" target="_blank" rel="noopener"><div class="dt">📄 ${esc(d.title)}</div><div class="dd">${esc(d.type)}</div></a>`).join('') || '<div class="empty">No documents linked.</div>'}</div>`;
+  return `
+  <div class="page-head"><div>
+    <div class="eyebrow" style="color:var(--${b.cvar})">${esc(b.name)}</div>
+    <h1 class="pt">${esc(b.short)} workspace</h1>
+    <div class="pt-sub">${esc(b.tagline)}</div>
+  </div></div>
+  <div class="tabs">${tabs.map(([id, l]) => `<a class="tab ${tab === id ? 'active' : ''}" href="#/biz/${b.id}?tab=${id}">${l}</a>`).join('')}</div>
+  ${body}`;
+};
+
+/* ============ modals ============ */
+function openOverlay(html, cls){
+  layer.innerHTML = `<div class="overlay" data-overlay>${html}</div>`;
+  const first = layer.querySelector('input,select,textarea,button');
+  if (first && cls !== 'noFocus') first.focus();
+}
+function closeOverlay(){ layer.innerHTML = ''; }
+
+function taskModal(t){
+  const isNew = !t;
+  t = t || { id:'', title:'', business:'', priority:'P2', due:'', status:'todo', category:'', notes:'', est:'', repeat:'none', links:[] };
+  openOverlay(`<div class="modal">
+    <h3>${isNew ? 'New task' : 'Edit task'}</h3>
+    <form data-form="task" data-id="${t.id}">
+      <div class="frm">
+        <label class="full">Title<input name="title" required value="${esc(t.title)}" placeholder="What needs to happen?"></label>
+        <label>Business<select name="business"><option value="">General</option>${AI.businesses.map(b => `<option value="${b.id}" ${t.business === b.id ? 'selected' : ''}>${esc(b.short)}</option>`).join('')}</select></label>
+        <label>Category<input name="category" value="${esc(t.category)}" placeholder="Outreach, Finance…"></label>
+        <label>Priority<select name="priority">${['P1','P2','P3'].map(p => `<option ${t.priority === p ? 'selected' : ''}>${p}</option>`).join('')}</select></label>
+        <label>Status<select name="status">${[['todo','To do'],['doing','In progress'],['done','Completed']].map(([v, l]) => `<option value="${v}" ${t.status === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+        <label>Deadline<input type="date" name="due" value="${esc(t.due)}"></label>
+        <label>Estimated time<input name="est" value="${esc(t.est)}" placeholder="30 min"></label>
+        <label>Repeat<select name="repeat">${[['none','Never'],['daily','Daily'],['weekly','Weekly'],['monthly','Monthly']].map(([v, l]) => `<option value="${v}" ${t.repeat === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+        <label class="full">Notes<textarea name="notes" placeholder="Context, phone numbers, next steps…">${esc(t.notes)}</textarea></label>
+        <label class="full">Attachment links (comma-separated URLs)<input name="links" value="${esc((t.links || []).join(', '))}"></label>
+      </div>
+      <div class="modal-foot">
+        <button class="btn primary" type="submit">${isNew ? 'Create task' : 'Save changes'}</button>
+        ${!isNew ? `<button class="btn" type="button" data-act="dupTask" data-id="${t.id}">Duplicate</button>
+        <button class="btn" type="button" data-act="archTask" data-id="${t.id}">Archive</button>
+        <span class="spacer"></span>
+        <button class="btn danger" type="button" data-act="delTask" data-id="${t.id}">Delete</button>` : '<span class="spacer"></span>'}
+        <button class="btn ghost" type="button" data-act="close">Cancel</button>
+      </div>
+    </form>
+  </div>`);
+}
+
+function leadModal(l){
+  const isNew = !l;
+  l = l || { id:'', business: (arguments[1] || 'raas'), name:'', cat:'', area:'', phone:'', link:'', pitch:'', priority:'HIGH', status:'Not contacted', next:'', notes:'', value:'', prob:'', last:'' };
+  openOverlay(`<div class="modal">
+    <h3>${isNew ? 'New lead' : esc(l.name)}</h3>
+    <form data-form="lead" data-id="${l.id}">
+      <div class="frm">
+        <label class="full">Name<input name="name" required value="${esc(l.name)}"></label>
+        <label>Business<select name="business">${AI.businesses.map(b => `<option value="${b.id}" ${l.business === b.id ? 'selected' : ''}>${esc(b.short)}</option>`).join('')}</select></label>
+        <label>Category / industry<input name="cat" value="${esc(l.cat || '')}"></label>
+        <label>Area / location<input name="area" value="${esc(l.area || '')}"></label>
+        <label>Phone<input name="phone" value="${esc(l.phone || '')}"></label>
+        <label class="full">Website / Instagram<input name="link" value="${esc(l.link || '')}"></label>
+        <label>Priority<select name="priority">${['HIGH','MEDIUM','LOW'].map(p => `<option ${l.priority === p ? 'selected' : ''}>${p}</option>`).join('')}</select></label>
+        <label>Status<select name="status">${LEAD_STATUSES.map(s => `<option ${l.status === s ? 'selected' : ''}>${s}</option>`).join('')}</select></label>
+        <label>Last contact<input type="date" name="last" value="${esc(l.last || '')}"></label>
+        <label>Next follow-up<input type="date" name="next" value="${esc(l.next || '')}"></label>
+        <label>Est. value (₹)<input name="value" inputmode="numeric" value="${esc(l.value || '')}" placeholder="e.g. 32000"></label>
+        <label>Conversion %<input name="prob" inputmode="numeric" value="${esc(l.prob || '')}" placeholder="0–100"></label>
+        <label class="full">Pitch angle<textarea name="pitch">${esc(l.pitch || '')}</textarea></label>
+        <label class="full">Notes (yours — never overwritten)<textarea name="notes">${esc(l.notes || '')}</textarea></label>
+      </div>
+      <div class="modal-foot">
+        <button class="btn primary" type="submit">${isNew ? 'Add lead' : 'Save'}</button>
+        ${!isNew ? `<button class="btn" type="button" data-act="logContact" data-id="${esc(l.id)}">Log contact today</button>
+        <span class="spacer"></span><button class="btn danger" type="button" data-act="archLead" data-id="${esc(l.id)}">Archive</button>` : '<span class="spacer"></span>'}
+        <button class="btn ghost" type="button" data-act="close">Cancel</button>
+      </div>
+    </form>
+  </div>`);
+}
+
+function expenseModal(){
+  openOverlay(`<div class="modal">
+    <h3>Add finance entry</h3>
+    <form data-form="expense">
+      <div class="frm">
+        <label>Date<input type="date" name="date" value="${todayISO()}"></label>
+        <label>Amount (₹)<input name="amount" required inputmode="decimal" placeholder="0"></label>
+        <label class="full">Vendor / description<input name="vendor" required placeholder="Where did it go?"></label>
+        <label>Category<input name="category" placeholder="Food, Marketing, Bills…"></label>
+        <label>Type<select name="flag"><option value="">Spend (logged)</option><option value="urgent">Bill — needs payment</option><option value="warn">To verify</option></select></label>
+        <label class="full">Note<input name="note"></label>
+      </div>
+      <div class="modal-foot"><button class="btn primary" type="submit">Add</button><span class="spacer"></span><button class="btn ghost" type="button" data-act="close">Cancel</button></div>
+    </form>
+  </div>`);
+}
+
+/* ============ palette ============ */
+let palSel = 0;
+function paletteItems(q){
+  const items = [];
+  NAV.forEach(n => items.push({ icon:n.icon, label:n.label, sub:'Go to', run:() => { location.hash = '#/' + n.id; } }));
+  AI.businesses.forEach(b => items.push({ icon:'🏢', label:b.name, sub:'Workspace', run:() => { location.hash = '#/biz/' + b.id; } }));
+  items.push({ icon:'＋', label:'New task', sub:'Create', run:() => taskModal(null) });
+  items.push({ icon:'＋', label:'New lead', sub:'Create', run:() => leadModal(null) });
+  items.push({ icon:'🌓', label:'Toggle dark / light theme', sub:'Command', run:toggleTheme });
+  items.push({ icon:'⬇', label:'Export data backup', sub:'Command', run:exportBackup });
+  if (q) {
+    const s = q.toLowerCase();
+    st.tasks.filter(t => t.status !== 'archived' && t.title.toLowerCase().includes(s)).slice(0,5).forEach(t => items.push({ icon:'✅', label:t.title, sub:'Task', run:() => taskModal(t) }));
+    leads().filter(l => (l.name + ' ' + (l.cat||'') + ' ' + (l.area||'')).toLowerCase().includes(s)).slice(0,6).forEach(l => items.push({ icon:'👤', label:l.name, sub:(BIZ[l.business]||{}).short || 'Lead', run:() => leadModal(l) }));
+    expenses().filter(e => (e.vendor + ' ' + (e.category||'')).toLowerCase().includes(s)).slice(0,4).forEach(e => items.push({ icon:'💰', label:e.vendor + ' · ' + fmtMoney(e.amount), sub:'Finance', run:() => { location.hash = '#/finance'; } }));
+    AI.docs.filter(d => d.title.toLowerCase().includes(s)).slice(0,4).forEach(d => items.push({ icon:'📄', label:d.title, sub:'Open in Drive', run:() => window.open(d.url, '_blank', 'noopener') }));
+    return items.filter(i => i.label.toLowerCase().includes(s) || ['Task','Lead','Finance'].includes(i.sub));
+  }
+  return items;
+}
+function openPalette(){
+  palSel = 0;
+  openOverlay(`<div class="palette"><input id="pal-q" placeholder="Type a command or search everything…" autocomplete="off"><div class="pal-list" id="pal-list"></div></div>`);
+  const inp = document.getElementById('pal-q');
+  const paint = () => {
+    const items = paletteItems(inp.value);
+    palSel = Math.min(palSel, Math.max(0, items.length - 1));
+    document.getElementById('pal-list').innerHTML = items.length
+      ? items.map((it, i) => `<div class="pal-item ${i === palSel ? 'sel' : ''}" data-pal="${i}"><span class="ico">${it.icon}</span>${esc(it.label)}<span class="sub">${esc(it.sub)}</span></div>`).join('')
+      : '<div class="pal-empty">No matches.</div>';
+  };
+  paint();
+  inp.addEventListener('input', () => { palSel = 0; paint(); });
+  inp.addEventListener('keydown', e => {
+    const items = paletteItems(inp.value);
+    if (e.key === 'ArrowDown') { e.preventDefault(); palSel = Math.min(palSel + 1, items.length - 1); paint(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); palSel = Math.max(palSel - 1, 0); paint(); }
+    else if (e.key === 'Enter') { e.preventDefault(); const it = items[palSel]; if (it) { closeOverlay(); it.run(); } }
+    else if (e.key === 'Escape') closeOverlay();
+  });
+  document.getElementById('pal-list').addEventListener('click', e => {
+    const el = e.target.closest('[data-pal]'); if (!el) return;
+    const it = paletteItems(inp.value)[+el.dataset.pal];
+    if (it) { closeOverlay(); it.run(); }
+  });
+}
+
+/* ============ notifications panel ============ */
+function openNotifs(){
+  const ns = computeNotifs();
+  layer.innerHTML = `<div class="overlay" data-overlay style="background:transparent;place-items:start end"><div class="notif-panel">
+    ${ns.map(n => `<div class="notif ${st.notifRead[n.id] ? '' : 'unread'}" data-nroute="${esc(n.route)}"><span>${n.icon}</span><div><div class="nt">${esc(n.title)}</div><div class="nb">${esc(n.body)}</div></div></div>`).join('') || '<div class="pal-empty">All clear.</div>'}
+  </div></div>`;
+  ns.forEach(n => st.notifRead[n.id] = 1); save();
+  layer.querySelectorAll('[data-nroute]').forEach(el => el.addEventListener('click', () => { const r = el.dataset.nroute; closeOverlay(); location.hash = r; render(); }));
+}
+
+/* ============ copilot brain ============ */
+function copilotAnswer(q){
+  const s = q.toLowerCase();
+  const fu = followupsDue(); const od = overdue(); const dt = dueToday(); const ue = urgentExpenses();
+  if (/post|content|reel|caption|story/.test(s)) {
+    return 'Today (' + AI.posting.day + '):\n' + (AI.posting.plans||[]).map(p => '• ' + (BIZ[p.business]||{}).short + ' — ' + p.pillar + ' (best time ' + p.bestTime + ')').join('\n') + '\n\nFull hooks, captions and hashtags are in the Marketing Planner.';
+  }
+  if (/call|client|contact|phone|reach/.test(s) && !/not been|recently/.test(s)) {
+    const top = fu.length ? fu : leads().filter(l => l.status === 'Not contacted' && l.priority === 'HIGH').slice(0,5);
+    return (fu.length ? 'Follow-ups due now:\n' : 'Nothing due — highest-priority uncontacted leads:\n') + top.slice(0,6).map(l => '• ' + l.name + ' (' + ((BIZ[l.business]||{}).short) + ') ' + (l.phone || l.link || '')).join('\n');
+  }
+  if (/invoice|overdue|bill|pay|due/.test(s)) {
+    const lines = [];
+    ue.forEach(e => lines.push('• ' + e.vendor + ' — ' + fmtMoney(e.amount) + ' (URGENT)'));
+    expenses().filter(e => e.flag === 'warn').forEach(e => lines.push('• ' + e.vendor + ' — ' + fmtMoney(e.amount) + ' (verify)'));
+    od.forEach(t => lines.push('• Task overdue: ' + t.title + ' (was due ' + fmtDate(t.due) + ')'));
+    return lines.length ? lines.join('\n') : 'Nothing overdue right now. 👌';
+  }
+  if (/not been|recently|stale|neglect/.test(s)) {
+    const stale = leads().filter(l => l.status === 'Not contacted' && l.kind !== 'research');
+    return plural(stale.length, 'lead') + ' never contacted. Oldest follow-up dates:\n' + stale.sort((a,b) => (a.next||'9999') < (b.next||'9999') ? -1 : 1).slice(0,7).map(l => '• ' + l.name + ' (' + ((BIZ[l.business]||{}).short) + ') — planned ' + fmtDate(l.next)).join('\n');
+  }
+  if (/revenue|forecast|earn|income/.test(s)) {
+    const withVal = leads().filter(l => l.value && !/won|lost/i.test(l.status));
+    if (!withVal.length) return 'No revenue data is connected yet, so I won\'t invent a forecast. Add "Est. value" and "Conversion %" on leads (open any lead → edit) and I\'ll compute a weighted pipeline. You can also log won deals as leads with status Won.';
+    const sum = withVal.reduce((s2, l) => s2 + Number(l.value) * (Number(l.prob||50) / 100), 0);
+    return 'Weighted pipeline across ' + plural(withVal.length, 'valued lead') + ': ~' + fmtMoney(Math.round(sum)) + '. (Est. value × conversion %, open deals only.)';
+  }
+  if (/today|do|start|priorit/.test(s)) {
+    return ['Your day:',
+      ue.length ? '1. Pay: ' + ue.map(e => e.vendor + ' (' + fmtMoney(e.amount) + ')').join(', ') : null,
+      od.length ? '• Clear ' + plural(od.length, 'overdue task') + ': ' + od.slice(0,3).map(t => t.title).join('; ') : null,
+      dt.length ? '• Due today: ' + dt.slice(0,4).map(t => t.title).join('; ') : null,
+      fu.length ? '• Call: ' + fu.slice(0,3).map(l => l.name).join(', ') : null,
+      '• Post: ' + (AI.posting.plans||[]).map(p => (BIZ[p.business]||{}).short).join(', ') + ' (see Marketing Planner)'
+    ].filter(Boolean).join('\n');
+  }
+  return 'I can answer from your live data: try "What should I do today?", "Which clients should I call?", "Which bills are overdue?", "What content should I post?", "What is my revenue forecast?" — for anything deeper, ask me in the Claude session that maintains this dashboard.';
+}
+
+/* ============ actions ============ */
+function toggleTheme(){
+  const dark = st.theme === 'dark' || (!st.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  st.theme = dark ? 'light' : 'dark'; save(); render();
+}
+function exportBackup(){
+  const blob = new Blob([JSON.stringify(st, null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bizos-backup-' + todayISO() + '.json';
+  a.click(); URL.revokeObjectURL(a.href);
+  toast('Backup downloaded');
+}
+function toast(msg){
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 2400);
+}
+function findLead(id){ return leads().find(l => l.id === id); }
+function setLead(id, patch){
+  const isUser = st.userLeads.some(l => l.id === id);
+  if (isUser) { const l = st.userLeads.find(x => x.id === id); Object.assign(l, patch); }
+  else st.leadOverrides[id] = Object.assign(st.leadOverrides[id] || {}, patch);
+  save();
+}
+
+const ACTIONS = {
+  close: closeOverlay,
+  menu: () => document.getElementById('sidebar').classList.toggle('open'),
+  palette: openPalette,
+  bell: openNotifs,
+  theme: toggleTheme,
+  setTheme: el => { st.theme = el.dataset.v || null; save(); render(); },
+  export: exportBackup,
+  reset: () => {
+    openOverlay(`<div class="modal"><h3>Reset local data?</h3><p style="font-size:13px;color:var(--ink-dim)">This wipes every task, note, status and edit stored on this device. AI-suggested data will re-seed fresh. This cannot be undone — export a backup first.</p><div class="modal-foot"><button class="btn danger" data-act="reallyReset">Yes, wipe it</button><span class="spacer"></span><button class="btn ghost" data-act="close">Cancel</button></div></div>`);
+  },
+  reallyReset: () => { localStorage.removeItem(KEY); st = load(); closeOverlay(); render(); toast('Local data reset'); },
+  newTask: el => taskModal(null),
+  taskModal: el => { const t = st.tasks.find(x => x.id === el.dataset.id); if (t) taskModal(t); },
+  dupTask: el => {
+    const t = st.tasks.find(x => x.id === el.dataset.id); if (!t) return;
+    const c = Object.assign({}, t, { id: uid(), title: t.title + ' (copy)', status:'todo', created: Date.now(), order: st.tasks.length, seed:'' });
+    st.tasks.push(c); save(); closeOverlay(); render(); toast('Task duplicated');
+  },
+  archTask: el => { const t = st.tasks.find(x => x.id === el.dataset.id); if (t) { t.status = 'archived'; save(); closeOverlay(); render(); toast('Archived'); } },
+  delTask: el => { st.tasks = st.tasks.filter(x => x.id !== el.dataset.id); save(); closeOverlay(); render(); toast('Task deleted'); },
+  newLead: el => leadModal(null, el.dataset.biz),
+  leadModal: el => { const l = findLead(el.dataset.id); if (l) leadModal(l); },
+  archLead: el => { setLead(el.dataset.id, { archived: true }); closeOverlay(); render(); toast('Lead archived'); },
+  logContact: el => {
+    setLead(el.dataset.id, { last: todayISO(), status:'Contacted' });
+    closeOverlay(); render(); toast('Contact logged — set the next follow-up from the lead card');
+  },
+  newExpense: expenseModal,
+  expPaid: el => {
+    const id = el.dataset.id;
+    if (st.userExpenses.some(e => e.id === id)) { const e = st.userExpenses.find(x => x.id === id); e.flag = 'paid'; }
+    else st.expenseOverrides[id] = Object.assign(st.expenseOverrides[id] || {}, { flag:'paid' });
+    save(); render(); toast('Marked paid ✅');
+  },
+  ask: el => runCopilot(el.dataset.q)
+};
+
+function runCopilot(q){
+  st.copilot.push({ role:'user', text:q });
+  st.copilot.push({ role:'ai', text: copilotAnswer(q) });
+  if (st.copilot.length > 40) st.copilot = st.copilot.slice(-40);
+  save(); render();
+  const c = document.getElementById('chat'); if (c) c.scrollTop = c.scrollHeight;
+}
+
+/* ============ event wiring ============ */
+document.addEventListener('click', e => {
+  const ov = e.target.closest('[data-overlay]');
+  if (ov && e.target === ov) { closeOverlay(); return; }
+  const el = e.target.closest('[data-act]');
+  if (el) { const fn = ACTIONS[el.dataset.act]; if (fn) { fn(el, e); return; } }
+  const sb = document.getElementById('sidebar');
+  if (sb && sb.classList.contains('open') && e.target.closest('a.nav-item')) sb.classList.remove('open');
+});
+window.addEventListener('hashchange', render);
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
+  if (e.key === 'Escape') closeOverlay();
+});
+
+const CHANGES = {
+  toggle: el => {
+    const t = st.tasks.find(x => x.id === el.dataset.id); if (!t) return;
+    if (el.checked) {
+      t.status = 'done'; t.completedAt = Date.now();
+      if (t.repeat && t.repeat !== 'none' && t.due) {
+        const d = new Date(t.due + 'T00:00:00');
+        if (t.repeat === 'daily') d.setDate(d.getDate() + 1);
+        if (t.repeat === 'weekly') d.setDate(d.getDate() + 7);
+        if (t.repeat === 'monthly') d.setMonth(d.getMonth() + 1);
+        st.tasks.push(Object.assign({}, t, { id: uid(), status:'todo', completedAt: null, due: d.toISOString().slice(0,10), created: Date.now(), order: st.tasks.length }));
+        toast('Done — next occurrence scheduled');
+      } else toast('Done ✅');
+    } else { t.status = 'todo'; t.completedAt = null; }
+    save(); render();
+  },
+  tf: el => { TF[el.dataset.k] = el.value; const list = document.getElementById('task-list'); if (list) list.innerHTML = taskListHTML(); },
+  cf: el => { CF[el.dataset.k] = el.value; render(); },
+  leadStatus: el => { setLead(el.dataset.id, { status: el.value, last: /contacted|conversation|meeting|proposal/i.test(el.value) ? todayISO() : (findLead(el.dataset.id)||{}).last }); render(); },
+  leadNext: el => { setLead(el.dataset.id, { next: el.value }); render(); },
+  posted: el => { st.posted[AI.posting.date + '-' + el.dataset.biz] = el.checked ? 1 : 0; save(); render(); },
+  import: el => {
+    const f = el.files[0]; if (!f) return;
+    const rd = new FileReader();
+    rd.onload = () => { try { const data = JSON.parse(rd.result); st = Object.assign(defaults(), data); save(); render(); toast('Backup restored'); } catch(err){ toast('Invalid backup file'); } };
+    rd.readAsText(f);
+  }
+};
+document.addEventListener('change', e => {
+  const el = e.target.closest('[data-ch]'); if (!el) return;
+  const fn = CHANGES[el.dataset.ch]; if (fn) fn(el);
+});
+document.addEventListener('input', e => {
+  const el = e.target.closest('[data-ch="tf"],[data-ch="cf"]');
+  if (!el || el.type !== 'search') return;
+  if (el.dataset.ch === 'tf') { TF[el.dataset.k] = el.value; const list = document.getElementById('task-list'); if (list) list.innerHTML = taskListHTML(); }
+});
+
+document.addEventListener('submit', e => {
+  const f = e.target.closest('[data-form]'); if (!f) return;
+  e.preventDefault();
+  const kind = f.dataset.form;
+  const fd = new FormData(f);
+  const g = k => (fd.get(k) || '').toString().trim();
+  if (kind === 'task') {
+    const id = f.dataset.id;
+    const patch = { title: g('title'), business: g('business'), category: g('category'), priority: g('priority'),
+      status: g('status'), due: g('due'), est: g('est'), repeat: g('repeat'), notes: g('notes'),
+      links: g('links') ? g('links').split(',').map(x => x.trim()).filter(Boolean) : [] };
+    if (id) { const t = st.tasks.find(x => x.id === id); if (t) { Object.assign(t, patch); if (patch.status === 'done' && !t.completedAt) t.completedAt = Date.now(); } }
+    else st.tasks.push(Object.assign({ id: uid(), created: Date.now(), order: st.tasks.length, completedAt: null }, patch));
+    save(); closeOverlay(); render(); toast(id ? 'Saved' : 'Task created');
+  } else if (kind === 'lead') {
+    const id = f.dataset.id;
+    const patch = { name: g('name'), business: g('business'), cat: g('cat'), area: g('area'), phone: g('phone'),
+      link: g('link'), priority: g('priority'), status: g('status'), last: g('last'), next: g('next'),
+      value: g('value'), prob: g('prob'), pitch: g('pitch'), notes: g('notes') };
+    if (id) setLead(id, patch);
+    else st.userLeads.push(Object.assign({ id: uid(), source:'Added manually' }, patch));
+    save(); closeOverlay(); render(); toast(id ? 'Lead saved' : 'Lead added');
+  } else if (kind === 'expense') {
+    st.userExpenses.push({ id: uid(), date: g('date'), vendor: g('vendor'), amount: parseFloat(g('amount')) || 0,
+      category: g('category'), flag: g('flag'), note: g('note') });
+    save(); closeOverlay(); render(); toast('Entry added');
+  } else if (kind === 'copilot') {
+    const q = g('q'); if (q) runCopilot(q);
+  }
+});
+
+/* drag & drop reorder */
+let dragId = null;
+document.addEventListener('dragstart', e => {
+  const row = e.target.closest('.task-row'); if (!row) return;
+  dragId = row.dataset.task; row.classList.add('dragging');
+});
+document.addEventListener('dragend', e => {
+  const row = e.target.closest('.task-row'); if (row) row.classList.remove('dragging'); dragId = null;
+});
+document.addEventListener('dragover', e => { if (e.target.closest('.task-row')) e.preventDefault(); });
+document.addEventListener('drop', e => {
+  const over = e.target.closest('.task-row'); if (!over || !dragId || over.dataset.task === dragId) return;
+  e.preventDefault();
+  const a = st.tasks.find(t => t.id === dragId); const b = st.tasks.find(t => t.id === over.dataset.task);
+  if (!a || !b) return;
+  const tmp = a.order; a.order = b.order; b.order = tmp;
+  save(); const list = document.getElementById('task-list'); if (list) list.innerHTML = taskListHTML(); else render();
+});
+
+render();
+</script>
