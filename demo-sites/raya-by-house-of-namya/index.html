@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raya — by The House of Namya | Premium Personalised Towels</title>
+<meta name="description" content="Raya by The House of Namya — premium, personalised embroidered towels. Handcrafted, monogrammed, and made to order. Concept design demo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22serif%22>R</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Demo concept badge -->
+<div class="demo-badge" aria-hidden="true">
+  <span>Concept&nbsp;Demo</span>
+</div>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">Raya</div>
+  <div class="preloader-line"><span></span></div>
+</div>
+
+<!-- Grain overlay -->
+<svg class="grain" aria-hidden="true">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="saturate" values="0"></feColorMatrix>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noise)"></rect>
+</svg>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Header -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#home" class="brand-mark">
+      <span class="brand-mark-main">Raya</span>
+      <span class="brand-mark-sub">the house of namya</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#story" data-nav>Our Story</a>
+      <a href="#collections" data-nav>Collections</a>
+      <a href="#craft" data-nav>Craftsmanship</a>
+      <a href="#lookbook" data-nav>Gallery</a>
+      <a href="#contact" data-nav>Order</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-line header-cta" href="#contact">DM to Order</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <nav>
+    <a href="#story" data-nav>01. Our Story</a>
+    <a href="#collections" data-nav>02. Collections</a>
+    <a href="#craft" data-nav>03. Craftsmanship</a>
+    <a href="#lookbook" data-nav>04. Gallery</a>
+    <a href="#contact" data-nav>05. Order</a>
+  </nav>
+  <div class="mobile-nav-foot">
+    <a href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</div>
+
+<main id="home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-fabric" id="heroFabric" aria-hidden="true">
+      <svg viewBox="0 0 800 800" class="motif motif-1"><use href="#paisley"/></svg>
+      <svg viewBox="0 0 800 800" class="motif motif-2"><use href="#paisley"/></svg>
+      <svg viewBox="0 0 800 800" class="motif motif-3"><use href="#floral-ring"/></svg>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow reveal-up" data-delay="0">The House of Namya presents</p>
+      <h1 class="hero-title">
+        <span class="reveal-mask" style="--i:1"><span>R</span></span><span class="reveal-mask" style="--i:2"><span>a</span></span><span class="reveal-mask" style="--i:3"><span>y</span></span><span class="reveal-mask" style="--i:4"><span>a</span></span>
+      </h1>
+      <p class="hero-tagline reveal-up" data-delay="4">Art you wrap yourself in — premium, personalised towels, hand-embroidered and made to order.</p>
+      <div class="hero-cta reveal-up" data-delay="5">
+        <a href="#collections" class="btn btn-solid">Explore the Collections</a>
+        <a href="#story" class="btn btn-line">Our Story</a>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-cue-line"><i></i></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Soft ✦ Durable ✦ Absorbent ✦ Hand-Embroidered ✦ Personalised Monograms ✦ Made to Order ✦ </span>
+      <span>Soft ✦ Durable ✦ Absorbent ✦ Hand-Embroidered ✦ Personalised Monograms ✦ Made to Order ✦ </span>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="section-inner story-grid">
+      <div class="story-visual reveal-up">
+        <div class="swatch swatch-a">
+          <svg viewBox="0 0 800 800"><use href="#floral-ring"/></svg>
+        </div>
+        <div class="swatch swatch-b">
+          <svg viewBox="0 0 800 800"><use href="#paisley"/></svg>
+        </div>
+        <div class="story-frame"></div>
+      </div>
+
+      <div class="story-copy">
+        <p class="eyebrow reveal-up">Our Story</p>
+        <h2 class="section-title reveal-up">Your most used product,<br><em>finally</em> personal</h2>
+        <p class="reveal-up">Raya started with a simple question: towels are the one thing every home uses every single day — so why should they be an afterthought? The House of Namya set out to make them soft, durable, beautifully embroidered, and truly yours.</p>
+        <p class="reveal-up">Every piece is hand-finished in small batches, with room for your initials, your colours, your story. No big-box production lines — just a small team that replies to your DM personally and gets every order right.</p>
+
+        <div class="stat-row">
+          <div class="stat reveal-up">
+            <span class="stat-num" data-count="500">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Towels Hand-Embroidered</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat-num" data-count="25">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Cities Shipped To</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat-num" data-count="100">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Made to Order</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat-num" data-count="3">0</span><span class="stat-suffix">-Day</span>
+            <span class="stat-label">Avg. Dispatch Time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">Shop by Edit</p>
+        <h2 class="section-title reveal-up">Signature Collections</h2>
+        <p class="section-sub reveal-up">Four edits, each hand-embroidered — pick the one that matches your home.</p>
+      </div>
+
+      <div class="collection-grid">
+        <a class="collection-card reveal-up" href="#contact" style="--grad: var(--g1)">
+          <span class="collection-art"><svg viewBox="0 0 800 800"><use href="#paisley"/></svg></span>
+          <span class="collection-info">
+            <span class="collection-name">Temple Collection</span>
+            <span class="collection-desc">Sacred, pure, timeless — Nandi &amp; trishul motifs for the home mandir</span>
+            <span class="collection-link">View Collection →</span>
+          </span>
+        </a>
+        <a class="collection-card reveal-up" href="#contact" style="--grad: var(--g2)">
+          <span class="collection-art"><svg viewBox="0 0 800 800"><use href="#floral-ring"/></svg></span>
+          <span class="collection-info">
+            <span class="collection-name">Jaipuri Collection</span>
+            <span class="collection-desc">A touch of everyday luxury — hand-embroidered Rajasthani florals</span>
+            <span class="collection-link">View Collection →</span>
+          </span>
+        </a>
+        <a class="collection-card reveal-up" href="#contact" style="--grad: var(--g3)">
+          <span class="collection-art"><svg viewBox="0 0 800 800"><use href="#paisley"/></svg></span>
+          <span class="collection-info">
+            <span class="collection-name">Personalised Monograms</span>
+            <span class="collection-desc">Your initials, hand-stitched in your choice of thread &amp; motif</span>
+            <span class="collection-link">View Collection →</span>
+          </span>
+        </a>
+        <a class="collection-card reveal-up" href="#contact" style="--grad: var(--g4)">
+          <span class="collection-art"><svg viewBox="0 0 800 800"><use href="#floral-ring"/></svg></span>
+          <span class="collection-info">
+            <span class="collection-name">The Gifting Edit</span>
+            <span class="collection-desc">Boxed &amp; ribboned sets for weddings, Diwali &amp; housewarmings</span>
+            <span class="collection-link">View Collection →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFTSMANSHIP -->
+  <section class="craft" id="craft">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">How it's made</p>
+        <h2 class="section-title reveal-up">From Thread to Your Doorstep</h2>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline-line"><i id="timelineFill"></i></div>
+        <div class="timeline-steps">
+          <div class="t-step reveal-up">
+            <span class="t-num">01</span>
+            <h3>You DM Us</h3>
+            <p>Tell us the motif, thread colour &amp; monogram — we keep ordering simple and personal.</p>
+          </div>
+          <div class="t-step reveal-up">
+            <span class="t-num">02</span>
+            <h3>Hand-Embroider</h3>
+            <p>Every design is stitched by hand onto premium cotton, one towel at a time.</p>
+          </div>
+          <div class="t-step reveal-up">
+            <span class="t-num">03</span>
+            <h3>Personalise</h3>
+            <p>Your initials or a custom motif are added exactly the way you asked for.</p>
+          </div>
+          <div class="t-step reveal-up">
+            <span class="t-num">04</span>
+            <h3>Quality &amp; Absorption Test</h3>
+            <p>Every batch is checked by hand for softness, durability and absorbency.</p>
+          </div>
+          <div class="t-step reveal-up">
+            <span class="t-num">05</span>
+            <h3>Gift-Boxed &amp; Delivered</h3>
+            <p>Wrapped in Raya packaging and shipped straight to your door, on time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section class="lookbook" id="lookbook">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">Gallery</p>
+        <h2 class="section-title reveal-up">Elevate Your Morning Ritual</h2>
+        <p class="section-sub reveal-up">A glimpse of Raya, styled in real homes.</p>
+      </div>
+
+      <div class="masonry">
+        <div class="mason-item tall reveal-up" style="--grad: var(--g3)"><svg viewBox="0 0 800 800"><use href="#paisley"/></svg><span class="mason-cap">Temple Collection</span></div>
+        <div class="mason-item reveal-up" style="--grad: var(--g5)"><svg viewBox="0 0 800 800"><use href="#floral-ring"/></svg><span class="mason-cap">Jaipuri Florals</span></div>
+        <div class="mason-item reveal-up" style="--grad: var(--g2)"><svg viewBox="0 0 800 800"><use href="#paisley"/></svg><span class="mason-cap">Morning Ritual Edit</span></div>
+        <div class="mason-item tall reveal-up" style="--grad: var(--g1)"><svg viewBox="0 0 800 800"><use href="#floral-ring"/></svg><span class="mason-cap">Gifting Edit</span></div>
+        <div class="mason-item reveal-up" style="--grad: var(--g4)"><svg viewBox="0 0 800 800"><use href="#paisley"/></svg><span class="mason-cap">Monogram Detail</span></div>
+        <div class="mason-item reveal-up" style="--grad: var(--g6)"><svg viewBox="0 0 800 800"><use href="#floral-ring"/></svg><span class="mason-cap">Bath &amp; Vanity Styling</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-inner">
+      <p class="eyebrow reveal-up center">In Their Words</p>
+      <h2 class="section-title reveal-up center">Loved, Gifted, Reordered</h2>
+
+      <div class="slider" id="slider">
+        <div class="slide active">
+          <p class="quote">“Ordered the Jaipuri set with our initials monogrammed on — the embroidery is so much finer in person. Genuinely feels like a boutique hotel.”</p>
+          <p class="who">— Divya M., Gurgaon</p>
+        </div>
+        <div class="slide">
+          <p class="quote">“Gifted the Temple Collection set for a housewarming and it was the talk of the evening. The packaging alone felt premium.”</p>
+          <p class="who">— Karan T., Jaipur</p>
+        </div>
+        <div class="slide">
+          <p class="quote">“Small brand, big heart. I DM'd with a colour request and they got it exactly right — soft, absorbent, and it hasn't faded after months of wash.”</p>
+          <p class="who">— Rhea S., Mumbai</p>
+        </div>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="insta" id="insta">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow reveal-up center">Follow the Journey</p>
+        <h2 class="section-title reveal-up center">@raya_by.the.house.of.namya</h2>
+        <p class="section-sub reveal-up center">New drops, styling reels &amp; unboxings — first on Instagram.</p>
+      </div>
+
+      <div class="insta-grid">
+        <a class="insta-cell reveal-up" style="--grad: var(--g1)" href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ig-icon"><use href="#ig-heart"/></svg></a>
+        <a class="insta-cell reveal-up" style="--grad: var(--g2)" href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ig-icon"><use href="#ig-heart"/></svg></a>
+        <a class="insta-cell reveal-up" style="--grad: var(--g3)" href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ig-icon"><use href="#ig-heart"/></svg></a>
+        <a class="insta-cell reveal-up" style="--grad: var(--g4)" href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ig-icon"><use href="#ig-heart"/></svg></a>
+        <a class="insta-cell reveal-up" style="--grad: var(--g5)" href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ig-icon"><use href="#ig-heart"/></svg></a>
+        <a class="insta-cell reveal-up" style="--grad: var(--g6)" href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ig-icon"><use href="#ig-heart"/></svg></a>
+      </div>
+
+      <div class="insta-follow reveal-up center">
+        <a href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener" class="btn btn-solid">Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow reveal-up">Place an Order</p>
+        <h2 class="section-title reveal-up">Let's personalise <em>your</em> towels</h2>
+        <p class="reveal-up">We keep ordering simple, personal &amp; effortless — no cart, no checkout. Just tell us the collection, thread colour and monogram you'd like, and we'll take it from there.</p>
+
+        <ul class="contact-list reveal-up">
+          <li><span>WhatsApp</span><a href="https://wa.me/910000000000" target="_blank" rel="noopener">+91 00000 00000</a></li>
+          <li><span>Instagram DM</span><a href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener">@raya_by.the.house.of.namya</a></li>
+          <li><span>Email</span><a href="mailto:hello@rayabynamya.com">hello@rayabynamya.com</a></li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal-up" id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <input type="text" id="name" required placeholder=" ">
+            <label for="name">Your Name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="email" required placeholder=" ">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="field">
+          <input type="text" id="subject" placeholder=" ">
+          <label for="subject">Collection / Monogram Request</label>
+        </div>
+        <div class="field">
+          <textarea id="message" rows="4" placeholder=" "></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit" class="btn btn-solid form-submit">
+          <span class="btn-text">Send Enquiry</span>
+          <span class="btn-sent">Thank you — we'll be in touch ✦</span>
+        </button>
+        <p class="form-note">This is a demo form and does not send real messages.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark-main">Raya</span>
+      <span class="brand-mark-sub">the house of namya</span>
+      <p>Premium, personalised towels — hand-embroidered in India, made to order.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#story">Our Story</a>
+      <a href="#collections">Collections</a>
+      <a href="#craft">Craftsmanship</a>
+      <a href="#lookbook">Gallery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://www.instagram.com/raya_by.the.house.of.namya" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="mailto:hello@rayabynamya.com">Email</a>
+      <a href="https://wa.me/910000000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="mini-form" id="newsletterForm">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit" aria-label="Subscribe">→</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom section-inner">
+    <p>© <span id="year"></span> Raya by The House of Namya. All rights reserved.</p>
+    <p class="footer-credit">Concept demo — designed &amp; built as a portfolio proposal.</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- SVG sprite defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="paisley" viewBox="0 0 800 800">
+      <path d="M400 120c150 0 210 110 190 220-14 78-90 110-90 190 0 70 60 90 60 140 0 60-70 90-140 90-160 0-280-130-280-300 0-190 130-340 260-340z" fill="none" stroke="currentColor" stroke-width="2" opacity="0.55"/>
+      <path d="M400 170c115 0 165 90 148 175-12 62-72 88-72 152 0 55 47 71 47 111 0 47-55 70-110 70-125 0-220-103-220-236C193 292 293 170 400 170z" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+      <circle cx="400" cy="400" r="8" fill="currentColor" opacity="0.6"/>
+    </symbol>
+    <symbol id="floral-ring" viewBox="0 0 800 800">
+      <g fill="none" stroke="currentColor" stroke-width="2" opacity="0.5">
+        <circle cx="400" cy="400" r="260"/>
+        <circle cx="400" cy="400" r="180"/>
+      </g>
+      <g fill="currentColor" opacity="0.55">
+        <circle cx="400" cy="140" r="10"/>
+        <circle cx="400" cy="660" r="10"/>
+        <circle cx="140" cy="400" r="10"/>
+        <circle cx="660" cy="400" r="10"/>
+        <circle cx="216" cy="216" r="7"/>
+        <circle cx="584" cy="216" r="7"/>
+        <circle cx="216" cy="584" r="7"/>
+        <circle cx="584" cy="584" r="7"/>
+      </g>
+    </symbol>
+    <symbol id="ig-heart" viewBox="0 0 24 24">
+      <path d="M12 21s-7.5-4.6-10-9.1C0.4 8.3 2 4.8 5.6 4.1 8 3.6 10 5 12 7c2-2 4-3.4 6.4-2.9 3.6.7 5.2 4.2 3.6 7.8C19.5 16.4 12 21 12 21z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script src="js/main.js"></script>
+</body>
+</html>
